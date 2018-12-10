@@ -1,0 +1,92 @@
+﻿@model TomatoPizzaCafe.Models.Pizza
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <style>
+
+    html {
+        background-image: url('@Url.Content("~/images/tomatocafe.jpg")');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        height: 50%;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+    </style>
+
+</div>
+<h2>Edit</h2>
+
+<h4>Pizza</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PizzaId" />
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EightInchPrice" class="control-label"></label>
+                <input asp-for="EightInchPrice" class="form-control" />
+                <span asp-validation-for="EightInchPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenInchPrice" class="control-label"></label>
+                <input asp-for="TenInchPrice" class="form-control" />
+                <span asp-validation-for="TenInchPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TwelveInchPrice" class="control-label"></label>
+                <input asp-for="TwelveInchPrice" class="form-control" />
+                <span asp-validation-for="TwelveInchPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FourteenInchPrice" class="control-label"></label>
+                <input asp-for="FourteenInchPrice" class="form-control" />
+                <span asp-validation-for="FourteenInchPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EighteenInchPrice" class="control-label"></label>
+                <input asp-for="EighteenInchPrice" class="form-control" />
+                <span asp-validation-for="EighteenInchPrice" class="text-danger"></span>
+            </div>
+
+            @*<div>
+                <strong>Select the Pizza size</strong>
+                <input type="radio" asp-for="Size" value="8" tabindex="2" class="form-control" />8-inch  -  $9.25<br />
+                <input type="radio" asp-for="Size" value="10" tabindex="2" class="form-control" />10-inch  -  $11.25<br />
+                <input type="radio" asp-for="Size" value="12" tabindex="2" class="form-control" />12-inch  -  $13.25<br />
+                <input type="radio" asp-for="Size" value="14" tabindex="2" class="form-control" />14-inch  -  $15.25<br />
+                <input type="radio" asp-for="Size" value="18" tabindex="2" class="form-control" />18-inch  -  $19.95<br />
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

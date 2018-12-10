@@ -1,0 +1,80 @@
+﻿@model TomatoPizzaCafe.Models.Pizza
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <style>
+
+    html {
+        background-image: url('@Url.Content("~/images/tomatocafe.jpg")');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        height: 50%;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+    </style>
+
+</div>
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pizza</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EightInchPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EightInchPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TwelveInchPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TwelveInchPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenInchPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenInchPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FourteenInchPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FourteenInchPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EighteenInchPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EighteenInchPrice)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PizzaId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,43 @@
+﻿@model TomatoPizzaCafe.Models.MakeYourOwn
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">Make Your Own Pizza</h1>
+
+
+<h4>Edit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MakeYourOwnId" />
+            @*<div class="form-group">
+                <label asp-for="Toppings" class="control-label"></label>
+                <input asp-for="Toppings" class="form-control" />
+                <span asp-validation-for="Toppings" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Sauce" class="control-label"></label>
+                <input asp-for="Sauce" class="form-control" />
+                <span asp-validation-for="Sauce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Crust" class="control-label"></label>
+                <input asp-for="Crust" class="form-control" />
+                <span asp-validation-for="Crust" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

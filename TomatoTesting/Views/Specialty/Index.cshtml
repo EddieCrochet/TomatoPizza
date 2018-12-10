@@ -1,0 +1,245 @@
+﻿@model IEnumerable<TomatoPizzaCafe.Models.Pizza>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - Menu</title>
+    <style>
+        .menu-body {
+            max-width: 680px;
+            margin: 0 auto;
+            display: block;
+            color: rgb(92, 92, 92);
+        }
+
+        .menu-section {
+            margin-bottom: 80px;
+        }
+
+        .menu-section-title {
+            font-family: georgia;
+            font-size: 50px;
+            display: block;
+            font-weight: normal;
+            margin: 20px 0;
+            text-align: Center;
+        }
+
+        .menu-item {
+            margin: 35px 0;
+            font-size: 18px;
+        }
+
+        .menu-item-name {
+            font-family: helvetica;
+            font-weight: bold;
+            border-bottom: 2px dotted rgb(213, 213, 213);
+        }
+
+        .menu-item-description {
+            font-style: italic;
+            font-size: .9em;
+            line-height: 1.5em;
+        }
+
+        .menu-item-price {
+            float: right;
+            font-weight: bold;
+            font-family: arial;
+            margin-top: -22px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-body">
+        <!-- Section starts: Appetizers -->
+        <div class="menu-section">
+            <h2 class="menu-section-title">TOMATO PIZZA CAFE MENU</h2>
+            <!-- Item starts -->
+            @foreach (var item in Model)
+            {
+            <table class="table">
+                <tr>
+                    <td class="menu-item">
+                        <div class="menu-item-name">
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </div>
+                        <div class="menu-item-price">
+                            $@Html.DisplayFor(modelItem => item.EightInchPrice)+
+                        </div>
+                        <div class="menu-item-description">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </div>
+                        <div>
+                            <a asp-action="Order" asp-route-id="@item.PizzaId">Order</a>
+                        </div>
+                    </td>
+                </tr>
+                @*<div class="menu-item-description">
+            @Html.DisplayFor(modelItem => item.EightInchPrice)
+            <a asp-action="Order" asp-route-id="@item.PizzaId">Order</a>
+        </div>
+        <div class="menu-item-description">
+            @Html.DisplayFor(modelItem => item.TenInchPrice)
+            <a asp-action="Order" asp-route-id="@item.PizzaId">Order</a>
+        </div>
+        <div class="menu-item-description">
+            @Html.DisplayFor(modelItem => item.TwelveInchPrice)
+            <a asp-action="Order" asp-route-id="@item.PizzaId">Order</a>
+        </div>
+        <div class="menu-item-description">
+            @Html.DisplayFor(modelItem => item.FourteenInchPrice)
+            <a asp-action="Order" asp-route-id="@item.PizzaId">Order</a>
+        </div>
+        <div class="menu-item-description">
+            @Html.DisplayFor(modelItem => item.EighteenInchPrice)
+            <a asp-action="Order" asp-route-id="@item.PizzaId">Order</a>
+        </div>*@
+            </table>
+                    <!-- Item ends -->
+                    }
+
+
+                    <!-- Item starts -->
+                    <div class="menu-item">
+                        <div class="menu-item-name">
+                            Four Cheese Pizza
+                        </div>
+                        <div class="menu-item-price">
+                            $12.00+
+                        </div>
+                        <div class="menu-item-description">
+                            Mozzarella, cheddar, provolone and parmesan.
+                        </div>
+                    </div>
+                    <!-- Item ends -->
+                    <!-- Item starts -->
+                    <div class="menu-item">
+                        <div class="menu-item-name">
+                            BBQ Chicken Pizza
+                        </div>
+                        <div class="menu-item-price">
+                            $10.95+
+                        </div>
+                        <div class="menu-item-description">
+                            Chicken strips in BBQ sauce with mozzarella cheese.
+                        </div>
+                    </div>
+                    <!-- Item ends -->
+                    <!-- Item starts -->
+                    <div class="menu-item">
+                        <div class="menu-item-name">
+                            Mexican Pizza (Gluten Free)
+                        </div>
+                        <div class="menu-item-price">
+                            $16.75
+                        </div>
+                        <div class="menu-item-description">
+                            10" size. Pizza sauce, mozzarella cheese, ground beef,
+                            bacon, lettuce, tomatoes, black olives and cheddar cheese.
+                        </div>
+                    </div>
+                    <!-- Item ends -->
+                    <!-- Item starts -->
+                    <div class="menu-item">
+                        <div class="menu-item-name">
+                            Supreme Pizza
+                        </div>
+                        <div class="menu-item-price">
+                            $12.95
+                        </div>
+                        <div class="menu-item-description">
+                            Pizza sauce, sausage, pepperoni, onions, green and red peppers, mushrooms.
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">
+                            Shrimp Parmigiana Pizza (Gluten Free)
+                        </div>
+                        <div class="menu-item-price">
+                            $18.95
+                        </div>
+                        <div class="menu-item-description">
+                            10" size. Pizza sauce, breaded shrimp and mozzarella cheese.
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">
+                            Classic Calzones
+                        </div>
+                        <div class="menu-item-price">
+                            $7.95+
+                        </div>
+                        <div class="menu-item-description">
+                            Mozzarella and ricotta cheese. Includes small marinara
+                            sauce (3.25 oz) on the side. Extra marinara sauce $1.00.
+                        </div>
+                    </div>
+                    <!-- Item ends -->
+            </div>
+            <!-- Section ends: Appetizers -->
+            <!-- Section starts: Drinks -->
+            <div class="menu-section">
+                <h2 class="menu-section-title">CYBER BEVERAGES</h2>
+                <!-- Item starts -->
+                <div class="menu-item">
+                    <div class="menu-item-name">
+                        Tasty Drink
+                    </div>
+                    <div class="menu-item-price">
+                        $30
+                    </div>
+                    <div class="menu-item-description">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.
+                    </div>
+                </div>
+                <!-- Item ends -->
+                <!-- Item starts -->
+                <div class="menu-item">
+                    <div class="menu-item-name">
+                        Tasty Drink
+                    </div>
+                    <div class="menu-item-price">
+                        $30
+                    </div>
+                    <div class="menu-item-description">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.
+                    </div>
+                </div>
+                <!-- Item ends -->
+                <!-- Item starts -->
+                <div class="menu-item">
+                    <div class="menu-item-name">
+                        Tasty Drink
+                    </div>
+                    <div class="menu-item-price">
+                        $30
+                    </div>
+                    <div class="menu-item-description">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.
+                    </div>
+                </div>
+                <!-- Item ends -->
+                <!-- Item starts -->
+                <div class="menu-item">
+                    <div class="menu-item-name">
+                        Tasty Drink
+                    </div>
+                    <div class="menu-item-price">
+                        $30
+                    </div>
+                    <div class="menu-item-description">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.
+                    </div>
+                </div>
+                <!-- Item ends -->
+            </div>
+            <!-- Section ends: Drinks -->
+        </div>
+    </body>
+</html>

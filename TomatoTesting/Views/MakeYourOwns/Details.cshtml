@@ -1,0 +1,39 @@
+﻿@model TomatoPizzaCafe.Models.MakeYourOwn
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">Make Your Own Pizza</h1>
+
+<div>
+    <h4>Details</h4>
+    <hr />
+
+    @*<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Toppings)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Toppings)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sauce)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sauce)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Crust)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Crust)
+        </dd>
+    </dl>*@
+    
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MakeYourOwnId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

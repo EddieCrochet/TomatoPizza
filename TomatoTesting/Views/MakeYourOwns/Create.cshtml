@@ -1,0 +1,67 @@
+﻿@model TomatoPizzaCafe.Models.MakeYourOwn
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">Pizza Builder</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Toppings</label>
+                <label>black olives</label>
+                <input type="checkbox" id="blackOlives" />
+                <label>green peppers</label>
+                <input type="checkbox" id="greenPeppers" />
+                <label>mushrooms</label>
+                <input type="checkbox" id="mushrooms" />
+                <label>pepperoni</label>
+                <input type="checkbox" id="pepperoni" />
+                <label>sausage</label>
+                <input type="checkbox" id="sausage" />
+                <span asp-validation-for="Toppings" class="text-danger"></span>
+            </div>
+            <script type="text/javascript">
+                function concatenate() {
+
+                //if (with_space===true) {
+	               // return string_one+' '+string_two;
+                //}
+                //else {
+	               // return string_one+string_two;
+                //}
+                //}
+                //function join_names() {
+                //    var input_name_first = document.getElementsByName('name_first')[0].value;
+                //    var input_name_last = document.getElementsByName('name_last')[0].value;
+                //    var input_name_full = document.getElementsByName('name_full')[0];
+                //    var var_name_full = concatenate(input_name_first, input_name_last, true);
+                //    input_name_full.value = var_name_full;
+                //}
+            </script>
+            <div class="form-group">
+                <label asp-for="Sauce" class="control-label"></label>
+                <input asp-for="Sauce" class="form-control" />
+                <span asp-validation-for="Sauce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Crust" class="control-label"></label>
+                <input asp-for="Crust" class="form-control" />
+                <span asp-validation-for="Crust" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
