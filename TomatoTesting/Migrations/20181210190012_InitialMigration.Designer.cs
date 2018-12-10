@@ -9,7 +9,7 @@ using TomatoPizzaCafe.Data;
 namespace TomatoPizzaCafe.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20181207183226_InitialMigration")]
+    [Migration("20181210190012_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,18 +22,30 @@ namespace TomatoPizzaCafe.Migrations
 
             modelBuilder.Entity("TomatoPizzaCafe.Models.MakeYourOwn", b =>
                 {
-                    b.Property<string>("MakeYourOwnId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("MakeYourOwnId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Crust");
 
                     b.Property<string>("Sauce");
 
-                    b.Property<string>("Topping");
-
                     b.HasKey("MakeYourOwnId");
 
                     b.ToTable("MakeYourOwns");
+                });
+
+            modelBuilder.Entity("TomatoPizzaCafe.Models.MakeYourOwnTopping", b =>
+                {
+                    b.Property<int>("MakeYourOwnId");
+
+                    b.Property<int>("ToppingId");
+
+                    b.HasKey("MakeYourOwnId", "ToppingId");
+
+                    b.HasIndex("ToppingId");
+
+                    b.ToTable("MakeYourOwnTopping");
                 });
 
             modelBuilder.Entity("TomatoPizzaCafe.Models.Pizza", b =>
@@ -59,6 +71,32 @@ namespace TomatoPizzaCafe.Migrations
                     b.HasKey("PizzaId");
 
                     b.ToTable("Pizzas");
+                });
+
+            modelBuilder.Entity("TomatoPizzaCafe.Models.Topping", b =>
+                {
+                    b.Property<int>("ToppingId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ToppingId");
+
+                    b.ToTable("Toppings");
+                });
+
+            modelBuilder.Entity("TomatoPizzaCafe.Models.MakeYourOwnTopping", b =>
+                {
+                    b.HasOne("TomatoPizzaCafe.Models.MakeYourOwn", "MakeYourOwn")
+                        .WithMany("MakeYourOwnToppings")
+                        .HasForeignKey("MakeYourOwnId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TomatoPizzaCafe.Models.Topping", "Topping")
+                        .WithMany("MakeYourOwnToppings")
+                        .HasForeignKey("ToppingId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

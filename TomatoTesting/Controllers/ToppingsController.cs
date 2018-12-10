@@ -10,22 +10,22 @@ using TomatoPizzaCafe.Models;
 
 namespace TomatoPizzaCafe.Controllers
 {
-    public class MakeYourOwnsController : Controller
+    public class ToppingsController : Controller
     {
         private readonly ApplicationContext _context;
 
-        public MakeYourOwnsController(ApplicationContext context)
+        public ToppingsController(ApplicationContext context)
         {
             _context = context;
         }
 
-        // GET: MakeYourOwns
+        // GET: Toppings
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MakeYourOwns.ToListAsync());
+            return View(await _context.Toppings.ToListAsync());
         }
 
-        // GET: MakeYourOwns/Details/5
+        // GET: Toppings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,76 +33,62 @@ namespace TomatoPizzaCafe.Controllers
                 return NotFound();
             }
 
-            var makeYourOwn = await _context.MakeYourOwns
-                .FirstOrDefaultAsync(m => m.MakeYourOwnId == id);
-            if (makeYourOwn == null)
+            var topping = await _context.Toppings
+                .FirstOrDefaultAsync(m => m.ToppingId == id);
+            if (topping == null)
             {
                 return NotFound();
             }
 
-            return View(makeYourOwn);
+            return View(topping);
         }
 
-        // GET: MakeYourOwns/Create
+        // GET: Toppings/Create
         public IActionResult Create()
         {
-            ViewBag.toppings = _context.Toppings;
-            ViewBag.sauce = new List<string> { "marinara", "pesto", "Alfredo" };
-            ViewBag.crust = new List<string> { "hand-tossed", "deep dish", "New York style" };
             return View();
         }
 
-        // POST: MakeYourOwns/Create
+        // POST: Toppings/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MakeYourOwn makeYourOwn, params string[] toppings)
-        { 
-            foreach (var topping in toppings)
-            {
-                if (_context.Toppings.FirstOrDefault(t => t.Name == topping) != null)
-                {
-                    var myot = new MakeYourOwnTopping
-                    {
-                        Topping = _context.Toppings.FirstOrDefault(t => t.Name == topping),
-                        MakeYourOwn = makeYourOwn
-                    };
-                }
-            }
+        public async Task<IActionResult> Create([Bind("ToppingId,Name")] Topping topping)
+        {
             if (ModelState.IsValid)
             {
-                _context.Add(makeYourOwn);
+                _context.Add(topping);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(makeYourOwn);
+            return View(topping);
         }
 
-        // GET: MakeYourOwns/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: Toppings/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var makeYourOwn = await _context.MakeYourOwns.FindAsync(id);
-            if (makeYourOwn == null)
+            var topping = await _context.Toppings.FindAsync(id);
+            if (topping == null)
             {
                 return NotFound();
             }
-            return View(makeYourOwn);
+            return View(topping);
         }
 
-        // POST: MakeYourOwns/Edit/5
+        // POST: Toppings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MakeYourOwnId,Topping,Sauce,Crust")] MakeYourOwn makeYourOwn)
+        public async Task<IActionResult> Edit(int id, [Bind("ToppingId,Name")] Topping topping)
         {
-            if (id != makeYourOwn.MakeYourOwnId)
+            if (id != topping.ToppingId)
             {
                 return NotFound();
             }
@@ -111,12 +97,12 @@ namespace TomatoPizzaCafe.Controllers
             {
                 try
                 {
-                    _context.Update(makeYourOwn);
+                    _context.Update(topping);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MakeYourOwnExists(makeYourOwn.MakeYourOwnId))
+                    if (!ToppingExists(topping.ToppingId))
                     {
                         return NotFound();
                     }
@@ -127,10 +113,10 @@ namespace TomatoPizzaCafe.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(makeYourOwn);
+            return View(topping);
         }
 
-        // GET: MakeYourOwns/Delete/5
+        // GET: Toppings/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -138,30 +124,30 @@ namespace TomatoPizzaCafe.Controllers
                 return NotFound();
             }
 
-            var makeYourOwn = await _context.MakeYourOwns
-                .FirstOrDefaultAsync(m => m.MakeYourOwnId == id);
-            if (makeYourOwn == null)
+            var topping = await _context.Toppings
+                .FirstOrDefaultAsync(m => m.ToppingId == id);
+            if (topping == null)
             {
                 return NotFound();
             }
 
-            return View(makeYourOwn);
+            return View(topping);
         }
 
-        // POST: MakeYourOwns/Delete/5
+        // POST: Toppings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var makeYourOwn = await _context.MakeYourOwns.FindAsync(id);
-            _context.MakeYourOwns.Remove(makeYourOwn);
+            var topping = await _context.Toppings.FindAsync(id);
+            _context.Toppings.Remove(topping);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MakeYourOwnExists(int id)
+        private bool ToppingExists(int id)
         {
-            return _context.MakeYourOwns.Any(e => e.MakeYourOwnId == id);
+            return _context.Toppings.Any(e => e.ToppingId == id);
         }
     }
 }

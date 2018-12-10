@@ -112,3 +112,8 @@ C:\Users\compf\.git\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\TomatoPi
 C:\Users\compf\.git\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\TomatoPizzaCafe.dll
 C:\Users\compf\.git\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\TomatoPizzaCafe.pdb
 C:\Users\compf\.git\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\TomatoPizzaCafe.csproj.CopyComplete
+C:\Users\compf\source\repos\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\Razor\Views\Toppings\Create.g.cshtml.cs
+C:\Users\compf\source\repos\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\Razor\Views\Toppings\Delete.g.cshtml.cs
+C:\Users\compf\source\repos\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\Razor\Views\Toppings\Details.g.cshtml.cs
+C:\Users\compf\source\repos\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\Razor\Views\Toppings\Edit.g.cshtml.cs
+C:\Users\compf\source\repos\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\Razor\Views\Toppings\Index.g.cshtml.cs

@@ -16,6 +16,16 @@ namespace TomatoPizzaCafe.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<MakeYourOwnTopping>()
+                .HasKey(mt => new { mt.MakeYourOwnId, mt.ToppingId });
+            modelBuilder.Entity<MakeYourOwnTopping>()
+                .HasOne(mt => mt.MakeYourOwn)
+                .WithMany(m => m.MakeYourOwnToppings)
+                .HasForeignKey(mt => mt.MakeYourOwnId);
+            modelBuilder.Entity<MakeYourOwnTopping>()
+                .HasOne(mt => mt.Topping)
+                .WithMany(t => t.MakeYourOwnToppings)
+                .HasForeignKey(mt => mt.ToppingId);
             modelBuilder.Entity<Pizza>()
                   .HasKey(nameof(Pizza.PizzaId));
             modelBuilder.Entity<MakeYourOwn>()
@@ -23,6 +33,7 @@ namespace TomatoPizzaCafe.Data
         }
         public DbSet<Pizza> Pizzas { get; set; }
         public DbSet<MakeYourOwn> MakeYourOwns { set; get; }
+        public DbSet<Topping> Toppings { get; set; }
 
     }
 }

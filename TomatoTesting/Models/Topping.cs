@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace TomatoPizzaCafe.Models
 {
-    public class MakeYourOwn
+    public class Topping
     {
-        public int MakeYourOwnId { get; set; }
-        public string Sauce { get; set; }
-        public string Crust { get; set; }
+        public int ToppingId { get; set; }
+        public string Name { get; set; }
         public ICollection<MakeYourOwnTopping> MakeYourOwnToppings { get; set; }
     }
 }

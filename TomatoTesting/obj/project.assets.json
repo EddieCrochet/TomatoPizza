@@ -12224,11 +12224,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\compf\\.git\\TomatoTesting\\TomatoTesting\\TomatoPizzaCafe.csproj",
+      "projectUniqueName": "C:\\Users\\compf\\source\\repos\\TomatoTesting\\TomatoTesting\\TomatoPizzaCafe.csproj",
       "projectName": "TomatoPizzaCafe",
-      "projectPath": "C:\\Users\\compf\\.git\\TomatoTesting\\TomatoTesting\\TomatoPizzaCafe.csproj",
+      "projectPath": "C:\\Users\\compf\\source\\repos\\TomatoTesting\\TomatoTesting\\TomatoPizzaCafe.csproj",
       "packagesPath": "C:\\Users\\compf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\compf\\.git\\TomatoTesting\\TomatoTesting\\obj\\",
+      "outputPath": "C:\\Users\\compf\\source\\repos\\TomatoTesting\\TomatoTesting\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
