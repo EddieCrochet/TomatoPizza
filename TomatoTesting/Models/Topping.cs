@@ -7,8 +7,7 @@ namespace TomatoPizzaCafe.Models
 {
     public class Topping
     {
-        public int ToppingId { get; set; }
+        public int ToppingID { get; set; }
         public string Name { get; set; }
-        //public ICollection<MakeYourOwnTopping> MakeYourOwnToppings { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace TomatoPizzaCafe.Controllers
             }
 
             var pizza = await _context.Pizzas
-                .FirstOrDefaultAsync(m => m.PizzaId == id);
+                .FirstOrDefaultAsync(m => m.PizzaID == id);
             if (pizza == null)
             {
                 return NotFound();
@@ -132,7 +132,7 @@ namespace TomatoPizzaCafe.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("PizzaId,Type,Size,Description,EightInchPrice, TenInchPrice, TwelveInchPrice, FourteenInchPrice, EighteenInchPrice")] Pizza pizza)
         {
-            if (id != pizza.PizzaId)
+            if (id != pizza.PizzaID)
             {
                 return NotFound();
             }
@@ -146,7 +146,7 @@ namespace TomatoPizzaCafe.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PizzaExists(pizza.PizzaId))
+                    if (!PizzaExists(pizza.PizzaID))
                     {
                         return NotFound();
                     }
@@ -169,7 +169,7 @@ namespace TomatoPizzaCafe.Controllers
             }
 
             var pizza = await _context.Pizzas
-                .FirstOrDefaultAsync(m => m.PizzaId == id);
+                .FirstOrDefaultAsync(m => m.PizzaID == id);
             if (pizza == null)
             {
                 return NotFound();
@@ -191,7 +191,7 @@ namespace TomatoPizzaCafe.Controllers
 
         private bool PizzaExists(int id)
         {
-            return _context.Pizzas.Any(e => e.PizzaId == id);
+            return _context.Pizzas.Any(e => e.PizzaID == id);
         }
     }
 }

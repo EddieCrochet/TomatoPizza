@@ -34,7 +34,7 @@ namespace TomatoPizzaCafe.Controllers
             }
 
             var topping = await _context.Toppings
-                .FirstOrDefaultAsync(m => m.ToppingId == id);
+                .FirstOrDefaultAsync(m => m.ToppingID == id);
             if (topping == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace TomatoPizzaCafe.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ToppingId,Name")] Topping topping)
         {
-            if (id != topping.ToppingId)
+            if (id != topping.ToppingID)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace TomatoPizzaCafe.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ToppingExists(topping.ToppingId))
+                    if (!ToppingExists(topping.ToppingID))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace TomatoPizzaCafe.Controllers
             }
 
             var topping = await _context.Toppings
-                .FirstOrDefaultAsync(m => m.ToppingId == id);
+                .FirstOrDefaultAsync(m => m.ToppingID == id);
             if (topping == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace TomatoPizzaCafe.Controllers
 
         private bool ToppingExists(int id)
         {
-            return _context.Toppings.Any(e => e.ToppingId == id);
+            return _context.Toppings.Any(e => e.ToppingID == id);
         }
     }
 }

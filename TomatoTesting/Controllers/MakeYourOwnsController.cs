@@ -35,7 +35,7 @@ namespace TomatoPizzaCafe.Controllers
             }
 
             var makeYourOwn = await _context.MakeYourOwns
-                .FirstOrDefaultAsync(m => m.MakeYourOwnId == id);
+                .FirstOrDefaultAsync(m => m.MakeYourOwnID == id);
             if (makeYourOwn == null)
             {
                 return NotFound();
@@ -95,7 +95,7 @@ namespace TomatoPizzaCafe.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MakeYourOwnId,Topping1,Topping2,Topping3,Topping4,Topping5,Topping6,Sauce,Crust")] MakeYourOwn makeYourOwn)
         {
-            if (id != makeYourOwn.MakeYourOwnId)
+            if (id != makeYourOwn.MakeYourOwnID)
             {
                 return NotFound();
             }
@@ -109,7 +109,7 @@ namespace TomatoPizzaCafe.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MakeYourOwnExists(makeYourOwn.MakeYourOwnId))
+                    if (!MakeYourOwnExists(makeYourOwn.MakeYourOwnID))
                     {
                         return NotFound();
                     }
@@ -132,7 +132,7 @@ namespace TomatoPizzaCafe.Controllers
             }
 
             var makeYourOwn = await _context.MakeYourOwns
-                .FirstOrDefaultAsync(m => m.MakeYourOwnId == id);
+                .FirstOrDefaultAsync(m => m.MakeYourOwnID == id);
             if (makeYourOwn == null)
             {
                 return NotFound();
@@ -154,7 +154,7 @@ namespace TomatoPizzaCafe.Controllers
 
         private bool MakeYourOwnExists(int id)
         {
-            return _context.MakeYourOwns.Any(e => e.MakeYourOwnId == id);
+            return _context.MakeYourOwns.Any(e => e.MakeYourOwnID == id);
         }
     }
 }

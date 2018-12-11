@@ -7,7 +7,7 @@ namespace TomatoPizzaCafe.Models
 {
     public class Pizza
     {
-        public int PizzaId { get; set; }
+        public int PizzaID { get; set; }
         public string Type { get; set; }
         public string Description { get; set; }
         public double EightInchPrice{ get; set; }
@@ -15,6 +15,7 @@ namespace TomatoPizzaCafe.Models
         public double TwelveInchPrice { get; set; }
         public double FourteenInchPrice { get; set; }
         public double EighteenInchPrice { get; set; }
-
+        public int OrderID { get; set; }
+        public Order Order { get; set; }
     }
 }

@@ -20,11 +20,13 @@ namespace TomatoPizzaCafe.Migrations.Application
 
             modelBuilder.Entity("TomatoPizzaCafe.Models.MakeYourOwn", b =>
                 {
-                    b.Property<int>("MakeYourOwnId")
+                    b.Property<int>("MakeYourOwnID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Crust");
+
+                    b.Property<int>("OrderID");
 
                     b.Property<string>("Sauce");
 
@@ -40,14 +42,29 @@ namespace TomatoPizzaCafe.Migrations.Application
 
                     b.Property<string>("Topping6");
 
-                    b.HasKey("MakeYourOwnId");
+                    b.HasKey("MakeYourOwnID");
+
+                    b.HasIndex("OrderID");
 
                     b.ToTable("MakeYourOwns");
                 });
 
+            modelBuilder.Entity("TomatoPizzaCafe.Models.Order", b =>
+                {
+                    b.Property<int>("OrderID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CustomerID");
+
+                    b.HasKey("OrderID");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("TomatoPizzaCafe.Models.Pizza", b =>
                 {
-                    b.Property<int>("PizzaId")
+                    b.Property<int>("PizzaID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -59,28 +76,48 @@ namespace TomatoPizzaCafe.Migrations.Application
 
                     b.Property<double>("FourteenInchPrice");
 
+                    b.Property<int>("OrderID");
+
                     b.Property<double>("TenInchPrice");
 
                     b.Property<double>("TwelveInchPrice");
 
                     b.Property<string>("Type");
 
-                    b.HasKey("PizzaId");
+                    b.HasKey("PizzaID");
+
+                    b.HasIndex("OrderID");
 
                     b.ToTable("Pizzas");
                 });
 
             modelBuilder.Entity("TomatoPizzaCafe.Models.Topping", b =>
                 {
-                    b.Property<int>("ToppingId")
+                    b.Property<int>("ToppingID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name");
 
-                    b.HasKey("ToppingId");
+                    b.HasKey("ToppingID");
 
                     b.ToTable("Toppings");
+                });
+
+            modelBuilder.Entity("TomatoPizzaCafe.Models.MakeYourOwn", b =>
+                {
+                    b.HasOne("TomatoPizzaCafe.Models.Order", "Order")
+                        .WithMany("MakeYourOwns")
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TomatoPizzaCafe.Models.Pizza", b =>
+                {
+                    b.HasOne("TomatoPizzaCafe.Models.Order", "Order")
+                        .WithMany("Pizzas")
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
