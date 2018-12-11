@@ -10,11 +10,11 @@ using TomatoPizzaCafe.Models;
 
 namespace TomatoPizzaCafe.Controllers
 {
-    public class SpecialtyController : Controller
+    public class PizzasController : Controller
     {
         private readonly ApplicationContext _context;
 
-        public SpecialtyController(ApplicationContext context)
+        public PizzasController(ApplicationContext context)
         {
             _context = context;
         }
