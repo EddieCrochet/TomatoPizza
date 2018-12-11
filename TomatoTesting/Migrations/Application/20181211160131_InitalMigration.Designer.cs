@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TomatoPizzaCafe.Data;
 
-namespace TomatoPizzaCafe.Migrations
+namespace TomatoPizzaCafe.Migrations.Application
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20181211160131_InitalMigration")]
+    partial class InitalMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,22 +30,21 @@ namespace TomatoPizzaCafe.Migrations
 
                     b.Property<string>("Sauce");
 
+                    b.Property<string>("Topping1");
+
+                    b.Property<string>("Topping2");
+
+                    b.Property<string>("Topping3");
+
+                    b.Property<string>("Topping4");
+
+                    b.Property<string>("Topping5");
+
+                    b.Property<string>("Topping6");
+
                     b.HasKey("MakeYourOwnId");
 
                     b.ToTable("MakeYourOwns");
-                });
-
-            modelBuilder.Entity("TomatoPizzaCafe.Models.MakeYourOwnTopping", b =>
-                {
-                    b.Property<int>("MakeYourOwnId");
-
-                    b.Property<int>("ToppingId");
-
-                    b.HasKey("MakeYourOwnId", "ToppingId");
-
-                    b.HasIndex("ToppingId");
-
-                    b.ToTable("MakeYourOwnTopping");
                 });
 
             modelBuilder.Entity("TomatoPizzaCafe.Models.Pizza", b =>
@@ -82,19 +83,6 @@ namespace TomatoPizzaCafe.Migrations
                     b.HasKey("ToppingId");
 
                     b.ToTable("Toppings");
-                });
-
-            modelBuilder.Entity("TomatoPizzaCafe.Models.MakeYourOwnTopping", b =>
-                {
-                    b.HasOne("TomatoPizzaCafe.Models.MakeYourOwn", "MakeYourOwn")
-                        .WithMany("MakeYourOwnToppings")
-                        .HasForeignKey("MakeYourOwnId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TomatoPizzaCafe.Models.Topping", "Topping")
-                        .WithMany("MakeYourOwnToppings")
-                        .HasForeignKey("ToppingId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

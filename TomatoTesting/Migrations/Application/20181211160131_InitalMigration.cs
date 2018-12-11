@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TomatoPizzaCafe.Migrations
+namespace TomatoPizzaCafe.Migrations.Application
 {
-    public partial class InitialMigration : Migration
+    public partial class InitalMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,13 @@ namespace TomatoPizzaCafe.Migrations
                     MakeYourOwnId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sauce = table.Column<string>(nullable: true),
-                    Crust = table.Column<string>(nullable: true)
+                    Crust = table.Column<string>(nullable: true),
+                    Topping1 = table.Column<string>(nullable: true),
+                    Topping2 = table.Column<string>(nullable: true),
+                    Topping3 = table.Column<string>(nullable: true),
+                    Topping4 = table.Column<string>(nullable: true),
+                    Topping5 = table.Column<string>(nullable: true),
+                    Topping6 = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,47 +58,15 @@ namespace TomatoPizzaCafe.Migrations
                 {
                     table.PrimaryKey("PK_Toppings", x => x.ToppingId);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "MakeYourOwnTopping",
-                columns: table => new
-                {
-                    MakeYourOwnId = table.Column<int>(nullable: false),
-                    ToppingId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MakeYourOwnTopping", x => new { x.MakeYourOwnId, x.ToppingId });
-                    table.ForeignKey(
-                        name: "FK_MakeYourOwnTopping_MakeYourOwns_MakeYourOwnId",
-                        column: x => x.MakeYourOwnId,
-                        principalTable: "MakeYourOwns",
-                        principalColumn: "MakeYourOwnId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MakeYourOwnTopping_Toppings_ToppingId",
-                        column: x => x.ToppingId,
-                        principalTable: "Toppings",
-                        principalColumn: "ToppingId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MakeYourOwnTopping_ToppingId",
-                table: "MakeYourOwnTopping",
-                column: "ToppingId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MakeYourOwnTopping");
+                name: "MakeYourOwns");
 
             migrationBuilder.DropTable(
                 name: "Pizzas");
-
-            migrationBuilder.DropTable(
-                name: "MakeYourOwns");
 
             migrationBuilder.DropTable(
                 name: "Toppings");

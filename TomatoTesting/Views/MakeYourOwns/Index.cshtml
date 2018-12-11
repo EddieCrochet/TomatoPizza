@@ -31,9 +31,9 @@
 <table class="table">
     <thead>
         <tr>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Toppings)
-            </th>*@
+            <th>
+                Toppings
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Sauce)
             </th>
@@ -46,9 +46,39 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Toppings)
-            </td>*@
+            <td>
+                @{
+                    if (item.Topping1 != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Topping1)
+                        <br />
+                    }
+                    if (item.Topping2 != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Topping2)
+                        <br />
+                    }
+                    if (item.Topping3 != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Topping3)
+                        <br />
+                    }
+                    if (item.Topping4 != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Topping4)
+                        <br />
+                    }
+                    if (item.Topping5 != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Topping5)
+                        <br />
+                    }
+                    if (item.Topping6 != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Topping6)
+                    }
+                }
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sauce)
             </td>

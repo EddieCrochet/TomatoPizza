@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -57,19 +58,8 @@ namespace TomatoPizzaCafe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MakeYourOwn makeYourOwn, params string[] toppings)
-        { 
-            foreach (var topping in toppings)
-            {
-                if (_context.Toppings.FirstOrDefault(t => t.Name == topping) != null)
-                {
-                    var myot = new MakeYourOwnTopping
-                    {
-                        Topping = _context.Toppings.FirstOrDefault(t => t.Name == topping),
-                        MakeYourOwn = makeYourOwn
-                    };
-                }
-            }
+        public async Task<IActionResult> Create(MakeYourOwn makeYourOwn)
+        {
             if (ModelState.IsValid)
             {
                 _context.Add(makeYourOwn);
@@ -80,7 +70,7 @@ namespace TomatoPizzaCafe.Controllers
         }
 
         // GET: MakeYourOwns/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -92,6 +82,9 @@ namespace TomatoPizzaCafe.Controllers
             {
                 return NotFound();
             }
+            ViewBag.toppings = _context.Toppings;
+            ViewBag.sauce = new List<string> { "marinara", "pesto", "Alfredo" };
+            ViewBag.crust = new List<string> { "hand-tossed", "deep dish", "New York style" };
             return View(makeYourOwn);
         }
 
@@ -100,7 +93,7 @@ namespace TomatoPizzaCafe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MakeYourOwnId,Topping,Sauce,Crust")] MakeYourOwn makeYourOwn)
+        public async Task<IActionResult> Edit(int id, [Bind("MakeYourOwnId,Topping1,Topping2,Topping3,Topping4,Topping5,Topping6,Sauce,Crust")] MakeYourOwn makeYourOwn)
         {
             if (id != makeYourOwn.MakeYourOwnId)
             {

@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TomatoPizzaCafe.Migrations.MyIdentity
+namespace TomatoPizzaCafe.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitalMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

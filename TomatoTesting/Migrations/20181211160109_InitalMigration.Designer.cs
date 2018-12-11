@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TomatoPizzaCafe.Models;
 
-namespace TomatoPizzaCafe.Migrations.MyIdentity
+namespace TomatoPizzaCafe.Migrations
 {
     [DbContext(typeof(MyIdentityContext))]
-    [Migration("20181210190031_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20181211160109_InitalMigration")]
+    partial class InitalMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

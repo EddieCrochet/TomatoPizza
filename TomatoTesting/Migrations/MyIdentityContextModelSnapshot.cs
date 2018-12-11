@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TomatoPizzaCafe.Models;
 
-namespace TomatoPizzaCafe.Migrations.MyIdentity
+namespace TomatoPizzaCafe.Migrations
 {
     [DbContext(typeof(MyIdentityContext))]
     partial class MyIdentityContextModelSnapshot : ModelSnapshot

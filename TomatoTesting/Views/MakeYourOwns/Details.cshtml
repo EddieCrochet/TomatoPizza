@@ -1,4 +1,4 @@
-﻿@model TomatoPizzaCafe.Models.MakeYourOwn
+﻿@*@model TomatoPizzaCafe.Models.MakeYourOwn
 
 @{
     ViewData["Title"] = "Details";
@@ -11,29 +11,98 @@
     <h4>Details</h4>
     <hr />
 
-    @*<dl class="dl-horizontal">
+    <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Toppings)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Toppings)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Sauce)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Sauce)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Crust)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Crust)
-        </dd>
-    </dl>*@
-    
-</div>
+            @{
+                if (Model.Topping1 != null)
+                {
+                    @Html.DisplayFor(modelItem => Model.Topping1)
+                    <br />
+                }
+                if (Model.Topping2 != null)
+                {
+                    @Html.DisplayFor(modelItem => Model.Topping2)
+                    <br />
+                }
+                if (Model.Topping3 != null)
+                {
+                    @Html.DisplayFor(modelItem => Model.Topping3)
+                    <br />
+                }
+                if (Model.Topping4 != null)
+                {
+                    @Html.DisplayFor(modelModel => Model.Topping4)
+                    <br />
+                }
+                if (Model.Topping5 != null)
+                {
+                    @Html.DisplayFor(modelModel => Model.Topping5)
+                    <br />
+                }
+                if (Model.Topping6 != null)
+                {
+                    @Html.DisplayFor(modelModel => Model.Topping6)
+                }
+            </dt>
+            <dt>
+                @Html.DisplayFor(modelModel => Model.Sauce)
+            </dt>
+            <dt>
+                @Html.DisplayFor(modelModel => Model.Crust)
+            </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Sauce)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Sauce)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Crust)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Crust)
+            </dd>
+        <td>
+            @{
+                if (item.Topping1 != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Topping1)
+                    <br />
+                }
+                if (item.Topping2 != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Topping2)
+                    <br />
+                }
+                if (item.Topping3 != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Topping3)
+                    <br />
+                }
+                if (item.Topping4 != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Topping4)
+                    <br />
+                }
+                if (item.Topping5 != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Topping5)
+                    <br />
+                }
+                if (item.Topping6 != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Topping6)
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sauce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Crust)
+        </td>
+    </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.MakeYourOwnId">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
