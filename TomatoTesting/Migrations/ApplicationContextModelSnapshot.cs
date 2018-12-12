@@ -27,8 +27,6 @@ namespace TomatoPizzaCafe.Migrations
 
                     b.Property<string>("Crust");
 
-                    b.Property<int?>("NumberOfPies");
-
                     b.Property<int?>("OrderID");
 
                     b.Property<string>("Sauce");
@@ -58,11 +56,38 @@ namespace TomatoPizzaCafe.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerID");
+                    b.Property<string>("CustomerName");
 
                     b.HasKey("OrderID");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("TomatoPizzaCafe.Models.OrderItem", b =>
+                {
+                    b.Property<int>("OrderItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("MakeYourOwnID");
+
+                    b.Property<int>("Number");
+
+                    b.Property<int>("OrderID");
+
+                    b.Property<int?>("PizzaID");
+
+                    b.Property<int>("Size");
+
+                    b.HasKey("OrderItemID");
+
+                    b.HasIndex("MakeYourOwnID");
+
+                    b.HasIndex("OrderID");
+
+                    b.HasIndex("PizzaID");
+
+                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("TomatoPizzaCafe.Models.Pizza", b =>
@@ -78,8 +103,6 @@ namespace TomatoPizzaCafe.Migrations
                     b.Property<double>("EighteenInchPrice");
 
                     b.Property<double>("FourteenInchPrice");
-
-                    b.Property<int?>("NumberOfPies");
 
                     b.Property<int?>("OrderID");
 
@@ -112,14 +135,30 @@ namespace TomatoPizzaCafe.Migrations
             modelBuilder.Entity("TomatoPizzaCafe.Models.MakeYourOwn", b =>
                 {
                     b.HasOne("TomatoPizzaCafe.Models.Order", "Order")
-                        .WithMany("MakeYourOwns")
+                        .WithMany()
                         .HasForeignKey("OrderID");
+                });
+
+            modelBuilder.Entity("TomatoPizzaCafe.Models.OrderItem", b =>
+                {
+                    b.HasOne("TomatoPizzaCafe.Models.MakeYourOwn", "MakeYourOwn")
+                        .WithMany()
+                        .HasForeignKey("MakeYourOwnID");
+
+                    b.HasOne("TomatoPizzaCafe.Models.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TomatoPizzaCafe.Models.Pizza", "Pizza")
+                        .WithMany()
+                        .HasForeignKey("PizzaID");
                 });
 
             modelBuilder.Entity("TomatoPizzaCafe.Models.Pizza", b =>
                 {
                     b.HasOne("TomatoPizzaCafe.Models.Order", "Order")
-                        .WithMany("Pizzas")
+                        .WithMany()
                         .HasForeignKey("OrderID");
                 });
 #pragma warning restore 612, 618

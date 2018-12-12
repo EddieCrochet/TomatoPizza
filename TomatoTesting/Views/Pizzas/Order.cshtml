@@ -1,4 +1,4 @@
-﻿@model TomatoPizzaCafe.Models.Pizza
+﻿@model TomatoPizzaCafe.Models.OrderItem
 
 @{
     ViewData["Title"] = "Create";
@@ -33,28 +33,28 @@
     <div class="panel-body">
         <form class="col-md-6" asp-action="Order">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="PizzaID" />
+            @*<input type="hidden" name="pizza-id" value=@Model.Pizza.PizzaID />*@
             <div>
-                <h4 style="color:darkgreen; font-weight: bold">Select the @ViewBag.pizza.Type size and number</h4>
+                <h4 style="color:darkgreen; font-weight: bold">Select the @Model.Pizza.Type size and number of pies</h4>
                 <br />
             </div>
-            <input type="radio" name="prices" asp-for="EightInchPrice" value="8" tabindex="2" />
-            8-inch  -  $@ViewBag.pizza.EightInchPrice
+            <input type="radio" name="Size" value="8" tabindex="2" />
+            8-inch  -  $@Model.Pizza.EightInchPrice
             <br />
-            <input type="radio" name="prices" asp-for="TenInchPrice" value="10" tabindex="2" />
-            10-inch  -  $@ViewBag.pizza.TenInchPrice
+            <input type="radio" name="Size" value="10" tabindex="2" />
+            10-inch  -  $@Model.Pizza.TenInchPrice
             <br />
-            <input type="radio" name="prices" asp-for="TwelveInchPrice" value="12" tabindex="2" />
-            12-inch  -  $@ViewBag.pizza.TwelveInchPrice
+            <input type="radio" name="Size" value="12" tabindex="2" />
+            12-inch  -  $@Model.Pizza.TwelveInchPrice
             <br />
-            <input type="radio" name="prices" asp-for="FourteenInchPrice" value="14" tabindex="2" />
-            14-inch  -  $@ViewBag.pizza.FourteenInchPrice
+            <input type="radio" name="Size" value="14" tabindex="2" />
+            14-inch  -  $@Model.Pizza.FourteenInchPrice
             <br />
-            <input type="radio" name="prices" asp-for="EighteenInchPrice" value="18" tabindex="2" />
-            18-inch  -  $@ViewBag.pizza.EighteenInchPrice
+            <input type="radio" name="Size" value="18" tabindex="2" />
+            18-inch  -  $@Model.Pizza.EighteenInchPrice
             <br />
-            <label asp-for="NumberOfPies">Number of pies</label>
-            <input asp-for="NumberOfPies" value="1" min="1" tabindex="2" />
+            <label asp-for=@Model.Number>Number of pies</label>
+            <input asp-for=@Model.Number value="1" min="1" tabindex="2" />
             <hr />
             <div class="form-group">
                 <input type="submit" value="Order" class="btn btn-default" />

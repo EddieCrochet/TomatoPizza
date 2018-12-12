@@ -149,14 +149,18 @@ namespace TomatoPizzaCafe.Controllers
             Order order = new Order();
             var user = _userManager.GetUserAsync(User);
             var makeYourOwn = _context.MakeYourOwns.FirstOrDefault(m => m.MakeYourOwnID == id);
-            order.CustomerID = user.Id;
-            order.MakeYourOwns = new List<MakeYourOwn>
-            {
-                makeYourOwn
-            };
+            order.CustomerName = user.ToString();
+            //order.MakeYourOwns = new List<MakeYourOwn>
+            //{
+            //    makeYourOwn
+            //};
             _context.Orders.Add(order);
             _context.SaveChanges();
             return View(nameof(Thanks));
+        }
+        public IActionResult Thanks()
+        {
+            return View();
         }
 
         // GET: MakeYourOwns/Delete/5

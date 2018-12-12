@@ -17,7 +17,6 @@ namespace TomatoPizzaCafe.Models
         public string Topping4 { get; set; }
         public string Topping5 { get; set; }
         public string Topping6 { get; set; }
-        public int? NumberOfPies { get; set; }
         public int? OrderID { get; set; }
         public Order Order { get; set; }
     }

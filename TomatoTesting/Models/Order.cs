@@ -9,8 +9,7 @@ namespace TomatoPizzaCafe.Models
     public class Order
     {
         public int OrderID { get; set; }
-        public int CustomerID { get; set; }
-        public List<MakeYourOwn> MakeYourOwns { get; set; }
-        public List<Pizza> Pizzas { get; set; }
+        public string CustomerName { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
     }
 }

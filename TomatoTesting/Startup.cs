@@ -50,6 +50,11 @@ namespace TomatoPizzaCafe
                 options.UseSqlServer(
                     Configuration.GetConnectionString("TomatoPizzaCafeContextConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);//You can set Time
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +74,7 @@ namespace TomatoPizzaCafe
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseAuthentication();
             app.UseCookiePolicy();
 

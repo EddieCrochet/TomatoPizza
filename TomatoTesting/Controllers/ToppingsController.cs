@@ -54,7 +54,7 @@ namespace TomatoPizzaCafe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ToppingId,Name")] Topping topping)
+        public async Task<IActionResult> Create([Bind("ToppingID,Name")] Topping topping)
         {
             if (ModelState.IsValid)
             {

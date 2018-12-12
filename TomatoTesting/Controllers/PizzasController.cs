@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +14,7 @@ namespace TomatoPizzaCafe.Controllers
 {
     public class PizzasController : Controller
     {
+        public int NumberOfPies;
         private readonly ApplicationContext _context;
         private UserManager<IdentityUser> _userManager;
 
@@ -83,33 +85,41 @@ namespace TomatoPizzaCafe.Controllers
         // GET: Pizzas/Order/5
         public async Task<IActionResult> Order(int? id)
         {
+            var order = new Order();
+            var orderId = order.OrderID;
+            order.OrderItems = new List<OrderItem>();
+            order.CustomerName = _userManager.GetUserName(User);
+            //HttpContext.Session.SetInt32("OrderID", order.OrderID);
+            OrderItem orderItem = new OrderItem();
             if (id == null)
             {
                 return NotFound();
             }
-
+            order.OrderItems.Add(orderItem);
+            _context.OrderItem.Add(orderItem);
+            _context.Orders.Add(order);
+            _context.SaveChanges();
             var pizza = await _context.Pizzas.FindAsync(id);
             if (pizza == null)
             {
                 return NotFound();
             }
-            ViewBag.pizza = pizza;
-            return View(pizza);
+            orderItem.Pizza = pizza;
+            return View(orderItem);
         }
 
         // POST: Pizzas/Order/5
         [HttpPost]
-        public IActionResult Order(int id)
+        public async Task<IActionResult> Order(int id, OrderItem orderItem)
         {
-            Order order = new Order();
-            var user = _userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User);
+            //var orderID = HttpContext.Session.GetInt32("OrderID");
+            var order = _context.Orders.FirstOrDefault(o => o.CustomerName == user.UserName);
             var pizza = _context.Pizzas.FirstOrDefault(p => p.PizzaID == id);
-            order.CustomerID = user.Id;
-            order.Pizzas = new List<Pizza>
-            {
-                pizza
-            };
-            _context.Orders.Add(order);
+            orderItem.Pizza = pizza;
+            orderItem.OrderID = order.OrderID;
+            orderItem.Order = order;
+            _context.OrderItem.Add(orderItem);
             _context.SaveChanges();
             return View(nameof(Thanks));
         }

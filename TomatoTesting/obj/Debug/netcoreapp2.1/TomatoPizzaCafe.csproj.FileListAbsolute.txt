@@ -241,3 +241,4 @@ C:\Users\compf\source\repos\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\
 C:\Users\compf\source\repos\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\Razor\Views\Pizzas\Index.g.cshtml.cs
 C:\Users\compf\source\repos\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\Razor\Views\Pizzas\Order.g.cshtml.cs
 C:\Users\compf\source\repos\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\Razor\Views\Pizzas\Thanks.g.cshtml.cs
+C:\Users\compf\source\repos\TomatoTesting\TomatoTesting\obj\Debug\netcoreapp2.1\Razor\Views\MakeYourOwns\Thanks.g.cshtml.cs

@@ -15,7 +15,6 @@ namespace TomatoPizzaCafe.Models
         public double TwelveInchPrice { get; set; }
         public double FourteenInchPrice { get; set; }
         public double EighteenInchPrice { get; set; }
-        public int? NumberOfPies { get; set; }
         public int? OrderID { get; set; }
         public Order Order { get; set; }
     }
