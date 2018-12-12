@@ -35,8 +35,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PizzaID" />
             <div>
-               <h4 style="color:darkgreen; font-weight: bold">Select the @ViewBag.pizza.Type size</h4> 
-            <br />
+                <h4 style="color:darkgreen; font-weight: bold">Select the @ViewBag.pizza.Type size and number</h4>
+                <br />
             </div>
             <input type="radio" name="prices" asp-for="EightInchPrice" value="8" tabindex="2" />
             8-inch  -  $@ViewBag.pizza.EightInchPrice
@@ -53,6 +53,8 @@
             <input type="radio" name="prices" asp-for="EighteenInchPrice" value="18" tabindex="2" />
             18-inch  -  $@ViewBag.pizza.EighteenInchPrice
             <br />
+            <label asp-for="NumberOfPies">Number of pies</label>
+            <input asp-for="NumberOfPies" value="1" min="1" tabindex="2" />
             <hr />
             <div class="form-group">
                 <input type="submit" value="Order" class="btn btn-default" />
@@ -67,4 +69,4 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+} 

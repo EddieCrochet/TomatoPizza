@@ -86,7 +86,7 @@ namespace TomatoPizzaCafe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ToppingId,Name")] Topping topping)
+        public async Task<IActionResult> Edit(int id, [Bind("ToppingID,Name")] Topping topping)
         {
             if (id != topping.ToppingID)
             {

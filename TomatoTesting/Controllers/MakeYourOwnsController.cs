@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +15,12 @@ namespace TomatoPizzaCafe.Controllers
     public class MakeYourOwnsController : Controller
     {
         private readonly ApplicationContext _context;
+        private UserManager<IdentityUser> _userManager;
 
-        public MakeYourOwnsController(ApplicationContext context)
+        public MakeYourOwnsController(ApplicationContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: MakeYourOwns
@@ -121,6 +124,39 @@ namespace TomatoPizzaCafe.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(makeYourOwn);
+        }
+        // GET: MakeYourOwns/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var makeYourOwn = await _context.MakeYourOwns.FindAsync(id);
+            if (makeYourOwn == null)
+            {
+                return NotFound();
+            }
+            ViewBag.makeYourOwn = makeYourOwn;
+            return View(makeYourOwn);
+        }
+
+        // POST: MakeYourOwns/Order/5
+        [HttpPost]
+        public IActionResult Order(int id)
+        {
+            Order order = new Order();
+            var user = _userManager.GetUserAsync(User);
+            var makeYourOwn = _context.MakeYourOwns.FirstOrDefault(m => m.MakeYourOwnID == id);
+            order.CustomerID = user.Id;
+            order.MakeYourOwns = new List<MakeYourOwn>
+            {
+                makeYourOwn
+            };
+            _context.Orders.Add(order);
+            _context.SaveChanges();
+            return View(nameof(Thanks));
         }
 
         // GET: MakeYourOwns/Delete/5

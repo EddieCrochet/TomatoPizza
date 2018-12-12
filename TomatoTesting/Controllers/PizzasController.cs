@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,19 +14,21 @@ namespace TomatoPizzaCafe.Controllers
     public class PizzasController : Controller
     {
         private readonly ApplicationContext _context;
+        private UserManager<IdentityUser> _userManager;
 
-        public PizzasController(ApplicationContext context)
+        public PizzasController(ApplicationContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        // GET: Specialty
+        // GET: Pizzzas
         public async Task<IActionResult> Index()
         {
             return View(await _context.Pizzas.ToListAsync());
         }
 
-        // GET: Specialty/Details/5
+        // GET: Pizzas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,7 +46,7 @@ namespace TomatoPizzaCafe.Controllers
             return View(pizza);
         }
 
-        // GET: Specialty/Create
+        // GET: Pizzas/Create
         public IActionResult Create()
         {
             //if (id == null)
@@ -61,7 +64,7 @@ namespace TomatoPizzaCafe.Controllers
             return View();
         }
 
-        // POST: Specialty/Create
+        // POST: Pizzas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -77,7 +80,7 @@ namespace TomatoPizzaCafe.Controllers
             return View(pizza);
         }
 
-        // GET: Specialty/Order/5
+        // GET: Pizzas/Order/5
         public async Task<IActionResult> Order(int? id)
         {
             if (id == null)
@@ -94,10 +97,20 @@ namespace TomatoPizzaCafe.Controllers
             return View(pizza);
         }
 
-        // POST: Specialty/Order/5
+        // POST: Pizzas/Order/5
         [HttpPost]
         public IActionResult Order(int id)
         {
+            Order order = new Order();
+            var user = _userManager.GetUserAsync(User);
+            var pizza = _context.Pizzas.FirstOrDefault(p => p.PizzaID == id);
+            order.CustomerID = user.Id;
+            order.Pizzas = new List<Pizza>
+            {
+                pizza
+            };
+            _context.Orders.Add(order);
+            _context.SaveChanges();
             return View(nameof(Thanks));
         }
 
@@ -106,7 +119,7 @@ namespace TomatoPizzaCafe.Controllers
             return View();
         }
 
-            // GET: Specialty/Edit/5
+            // GET: Pizzas/Edit/5
             public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -124,7 +137,7 @@ namespace TomatoPizzaCafe.Controllers
 
 
 
-        // POST: Specialty/Edit/5
+        // POST: Pizzas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
        
@@ -160,7 +173,7 @@ namespace TomatoPizzaCafe.Controllers
             return View(pizza);
         }
 
-        // GET: Specialty/Delete/5
+        // GET: Pizzas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -178,7 +191,7 @@ namespace TomatoPizzaCafe.Controllers
             return View(pizza);
         }
 
-        // POST: Specialty/Delete/5
+        // POST: Pizzas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

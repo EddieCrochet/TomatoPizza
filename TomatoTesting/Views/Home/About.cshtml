@@ -5,7 +5,7 @@
 @*<h3>@ViewData["Message"]</h3>*@
 <main>
 
-    <h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">About</h1>
+    <h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: white">About</h1>
   
     <div class="col-md-1">
         
@@ -15,23 +15,25 @@
         <div>
             <div class="pull-left">
 
-                <img class="hover-zoom" width="50" src="~/images/tomato.png" />
+                <img class="pic" width="400" src="~/images/tomato.png" />
             </div>
         </div>
 
         <style>
 
             .pull-left {
-                padding-right: 5px;
+                padding-right: 55px;
+                object-position: center;
+                text-emphasis-position: left;
+                background-color: darkolivegreen;
+            }
+
+            html, main, div, body, head, .navbar {
+                background-color: darkolivegreen;
             }
             
-            html {
-                background-image: url('/images/tomatocafe.jpg');
-                background-position: left;
-                background-repeat: no-repeat;
-                background-size: auto;
-                height: 50%;
-                padding: 5px;
+            p {
+                color: white;
             }
 
             footer {
@@ -47,10 +49,7 @@
 
         </section>
         <section>
-            <div class="pull-left">
-
-                <img class="hover-zoom" ; width="50" src="~/images/tomato.png" />
-            </div>
+            
             <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">  In 2009, they opened their first restaurant in Fishkill, NY. In 2017, the second location opened in Poughkeepsie. They continue to surround themselves with like minded individuals.</p>
             </>
         </section>
