@@ -85,37 +85,43 @@ namespace TomatoPizzaCafe.Controllers
         // GET: Pizzas/Order/5
         public async Task<IActionResult> Order(int? id)
         {
-            var order = new Order();
+            var user = await _userManager.GetUserAsync(User);
+            var order = _context.Orders.FirstOrDefault(o => o.CustomerName == user.UserName) ?? new Order();
             var orderId = order.OrderID;
             order.OrderItems = new List<OrderItem>();
             order.CustomerName = _userManager.GetUserName(User);
-            //HttpContext.Session.SetInt32("OrderID", order.OrderID);
             OrderItem orderItem = new OrderItem();
             if (id == null)
             {
                 return NotFound();
             }
-            order.OrderItems.Add(orderItem);
-            _context.OrderItem.Add(orderItem);
-            _context.Orders.Add(order);
-            _context.SaveChanges();
             var pizza = await _context.Pizzas.FindAsync(id);
             if (pizza == null)
             {
                 return NotFound();
             }
             orderItem.Pizza = pizza;
+            order.OrderItems.Add(orderItem);
+            _context.OrderItem.Add(orderItem);
+            if (_context.Orders.Contains(order))
+            {
+                _context.Orders.Update(order);
+            }
+            else
+            {
+                _context.Orders.Add(order);
+            }
+            _context.SaveChanges();
             return View(orderItem);
         }
 
         // POST: Pizzas/Order/5
         [HttpPost]
-        public async Task<IActionResult> Order(int id, OrderItem orderItem)
+        public async Task<IActionResult> Order(OrderItem orderItem)
         {
             var user = await _userManager.GetUserAsync(User);
-            //var orderID = HttpContext.Session.GetInt32("OrderID");
             var order = _context.Orders.FirstOrDefault(o => o.CustomerName == user.UserName);
-            var pizza = _context.Pizzas.FirstOrDefault(p => p.PizzaID == id);
+            var pizza = _context.Pizzas.FirstOrDefault(p => p.PizzaID == orderItem.Pizza.PizzaID);
             orderItem.Pizza = pizza;
             orderItem.OrderID = order.OrderID;
             orderItem.Order = order;

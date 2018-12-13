@@ -1,0 +1,71 @@
+﻿@model TomatoPizzaCafe.Models.OrderItem
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <style>
+
+    html {
+        background-image: url('@Url.Content("~/images/tomatocafe.jpg")');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        height: 50%;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+    </style>
+
+</div>
+<h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">Order Online</h1>
+
+<div class="panel panel-success">
+    <div class="panel-heading text-center">
+        <h4>Order Form</h4>
+    </div>
+
+    <div class="panel-body">
+        <form class="col-md-6" asp-action="Order">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <h4 style="color:darkgreen; font-weight: bold">Select the size and number of pies</h4>
+                <br />
+            </div>
+            <input type="radio" name="Size" value="8" tabindex="2" />
+            8-inch  -  $@(8.95 + Model.MakeYourOwn.NumberToppings)
+            <br />
+            <input type="radio" name="Size" value="10" tabindex="2" />
+            10-inch  -  $@(12.95 + Model.MakeYourOwn.NumberToppings)
+            <br />
+            <input type="radio" name="Size" value="12" tabindex="2" />
+            12-inch  -  $@(14.95 + Model.MakeYourOwn.NumberToppings)
+            <br />
+            <input type="radio" name="Size" value="14" tabindex="2" />
+            14-inch  -  $@(16.00 + Model.MakeYourOwn.NumberToppings)
+            <br />
+            <input type="radio" name="Size" value="18" tabindex="2" />
+            18-inch  -  $@(20.00 + Model.MakeYourOwn.NumberToppings)
+            <br />
+            <label asp-for=@Model.Number>Number of pies</label>
+            <input asp-for=@Model.Number value="1" min="1" tabindex="2" />
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Order" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

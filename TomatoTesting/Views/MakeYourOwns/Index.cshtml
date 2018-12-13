@@ -86,7 +86,7 @@
                 @Html.DisplayFor(modelItem => item.Crust)
             </td>
             <td>
-
+                <a asp-action="Order" asp-route-id="@item.MakeYourOwnID">Order</a>
                 <a asp-action="Edit" asp-route-id="@item.MakeYourOwnID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.MakeYourOwnID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.MakeYourOwnID">Delete</a>
