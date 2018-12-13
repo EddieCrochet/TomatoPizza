@@ -71,7 +71,7 @@ namespace TomatoPizzaCafe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PizzaId,Type,Description, EightInchPrice, TenInchPrice, TwelveInchPrice, FourteenInchPrice, EighteenInchPrice")] Pizza pizza)
+        public async Task<IActionResult> Create([Bind("PizzaID,Type,Description, EightInchPrice, TenInchPrice, TwelveInchPrice, FourteenInchPrice, EighteenInchPrice")] Pizza pizza)
         {
             if (ModelState.IsValid)
             {
@@ -85,12 +85,28 @@ namespace TomatoPizzaCafe.Controllers
         // GET: Pizzas/Order/5
         public async Task<IActionResult> Order(int? id)
         {
+            Order order;
             var user = await _userManager.GetUserAsync(User);
-            var order = _context.Orders.FirstOrDefault(o => o.CustomerName == user.UserName) ?? new Order();
-            var orderId = order.OrderID;
-            order.OrderItems = new List<OrderItem>();
-            order.CustomerName = _userManager.GetUserName(User);
+            try
+            {
+               order = _context.Orders.First(o => o.CustomerName == user.UserName);
+               if (order.OrderItems == null)
+                    order.OrderItems = new List<OrderItem>();
+            }
+            catch
+            { 
+                order = new Order();
+                order.OrderItems = new List<OrderItem>();
+                _context.Orders.Add(order);
+                _context.SaveChanges();
+            }
+            //var orderId = order.OrderID;
+            order.CustomerName = user.UserName;
             OrderItem orderItem = new OrderItem();
+            orderItem.OrderID = order.OrderID;
+            order.OrderItems.Add(orderItem);
+            _context.OrderItem.Add(orderItem);
+            _context.SaveChanges();
             if (id == null)
             {
                 return NotFound();
@@ -101,8 +117,6 @@ namespace TomatoPizzaCafe.Controllers
                 return NotFound();
             }
             orderItem.Pizza = pizza;
-            order.OrderItems.Add(orderItem);
-            _context.OrderItem.Add(orderItem);
             if (_context.Orders.Contains(order))
             {
                 _context.Orders.Update(order);
@@ -117,15 +131,14 @@ namespace TomatoPizzaCafe.Controllers
 
         // POST: Pizzas/Order/5
         [HttpPost]
-        public async Task<IActionResult> Order(OrderItem orderItem)
+        public async Task<IActionResult> Order([Bind("OrderItemID, Size, Number")] OrderItem _orderItem)
         {
             var user = await _userManager.GetUserAsync(User);
             var order = _context.Orders.FirstOrDefault(o => o.CustomerName == user.UserName);
-            var pizza = _context.Pizzas.FirstOrDefault(p => p.PizzaID == orderItem.Pizza.PizzaID);
-            orderItem.Pizza = pizza;
-            orderItem.OrderID = order.OrderID;
-            orderItem.Order = order;
-            _context.OrderItem.Add(orderItem);
+            var orderItem = _context.OrderItem.FirstOrDefault(oi => oi.OrderItemID == _orderItem.OrderItemID);
+            orderItem.Size = _orderItem.Size;
+            orderItem.Number = _orderItem.Number;
+            _context.OrderItem.Update(orderItem);
             _context.SaveChanges();
             return View(nameof(Thanks));
         }
@@ -159,7 +172,7 @@ namespace TomatoPizzaCafe.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PizzaId,Type,Size,Description,EightInchPrice, TenInchPrice, TwelveInchPrice, FourteenInchPrice, EighteenInchPrice")] Pizza pizza)
+        public async Task<IActionResult> Edit(int id, [Bind("PizzaID,Type,Size,Description,EightInchPrice, TenInchPrice, TwelveInchPrice, FourteenInchPrice, EighteenInchPrice")] Pizza pizza)
         {
             if (id != pizza.PizzaID)
             {

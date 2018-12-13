@@ -92,7 +92,7 @@ namespace TomatoPizzaCafe.Migrations
                 {
                     OrderItemID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    OrderID = table.Column<int>(nullable: false),
+                    OrderID = table.Column<int>(nullable: true),
                     PizzaID = table.Column<int>(nullable: true),
                     MakeYourOwnID = table.Column<int>(nullable: true),
                     Size = table.Column<int>(nullable: false),
@@ -112,7 +112,7 @@ namespace TomatoPizzaCafe.Migrations
                         column: x => x.OrderID,
                         principalTable: "Orders",
                         principalColumn: "OrderID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_OrderItem_Pizzas_PizzaID",
                         column: x => x.PizzaID,

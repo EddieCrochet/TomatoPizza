@@ -37,6 +37,7 @@
                 <h4 style="color:darkgreen; font-weight: bold">Select the size and number of pies</h4>
                 <br />
             </div>
+            <input type="hidden" asp-for="OrderItemID" />
             <input type="radio" name="Size" value="8" tabindex="2" />
             8-inch  -  $@(8.95 + Model.MakeYourOwn.NumberToppings)
             <br />

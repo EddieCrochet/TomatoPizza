@@ -73,7 +73,7 @@ namespace TomatoPizzaCafe.Migrations
 
                     b.Property<int>("Number");
 
-                    b.Property<int>("OrderID");
+                    b.Property<int?>("OrderID");
 
                     b.Property<int?>("PizzaID");
 
@@ -147,8 +147,7 @@ namespace TomatoPizzaCafe.Migrations
 
                     b.HasOne("TomatoPizzaCafe.Models.Order", "Order")
                         .WithMany("OrderItems")
-                        .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OrderID");
 
                     b.HasOne("TomatoPizzaCafe.Models.Pizza", "Pizza")
                         .WithMany()

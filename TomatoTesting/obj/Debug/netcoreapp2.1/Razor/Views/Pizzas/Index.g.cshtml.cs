@@ -62,7 +62,7 @@ using TomatoPizzaCafe.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n");
             EndContext();
             BeginContext(141, 1225, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4b639831c594636b802160fb02f90e4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b8f16f1310f84f1e8be3ce63ea936099", async() => {
                 BeginContext(147, 115, true);
                 WriteLiteral("\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n    <title>");
                 EndContext();
@@ -136,7 +136,7 @@ using TomatoPizzaCafe.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(1368, 8262, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ab80783bca0645dfbb44b498f0dd1b5a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75892f5a76e44f4098ed6d21af7dc322", async() => {
                 BeginContext(1374, 218, true);
                 WriteLiteral("\r\n    <div class=\"menu-body\">\r\n        <!-- Section starts: Appetizers -->\r\n        <div class=\"menu-section\">\r\n            <h2 class=\"menu-section-title\">TOMATO PIZZA CAFE MENU</h2>\r\n            <!-- Item starts -->\r\n");
                 EndContext();
@@ -180,7 +180,7 @@ using TomatoPizzaCafe.Models;
                 WriteLiteral("\r\n                        </div>\r\n                        <div>\r\n                            ");
                 EndContext();
                 BeginContext(2304, 60, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4839796102da4244bba387738bd5b261", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f5f8281688a44722aa0747700f61aacf", async() => {
                     BeginContext(2355, 5, true);
                     WriteLiteral("Order");
                     EndContext();

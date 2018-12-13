@@ -5,10 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">Make Your Own Pizza</h1>
+<div class="container">
+    <style>
 
+    html {
+        background-image: url('@Url.Content("~/images/tomatocafe.jpg")');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        height: 50%;
+    }
 
-<h4>Edit</h4>
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+    </style>
+
+</div>
+<h2>Edit</h2>
+
+<h4>Make Your Own</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -16,7 +33,16 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MakeYourOwnID" />
             <div class="form-group">
-                <br />
+                <div class="form-group">
+                    <label asp-for="Sauce" class="control-label"></label>
+                    <input asp-for="Sauce" class="form-control" />
+                    <span asp-validation-for="Sauce" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Crust" class="control-label"></label>
+                    <input asp-for="Crust" class="form-control" />
+                    <span asp-validation-for="Crust" class="text-danger"></span>
+                </div>
                 <label asp-for="Topping1" class="control-label"></label>
                 <select asp-for="Topping1">
                     <option value=" "></option>
@@ -82,16 +108,6 @@
                         }
                     }
                 </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sauce" class="control-label"></label>
-                <input asp-for="Sauce" class="form-control" />
-                <span asp-validation-for="Sauce" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Crust" class="control-label"></label>
-                <input asp-for="Crust" class="form-control" />
-                <span asp-validation-for="Crust" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
