@@ -13,6 +13,30 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Sauce" class="control-label"></label>
+                <select asp-for="Sauce" class="form-control">
+                    @{
+                        foreach (var sauce in ViewBag.sauce)
+                        {
+                            <option>@sauce</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="Sauce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Crust" class="control-label"></label>
+                <select asp-for="Crust" class="form-control">
+                    @{
+                        foreach (var crust in ViewBag.crust)
+                        {
+                            <option>@crust</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="Crust" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <br />
                 <label asp-for="Topping1" class="control-label"></label>
                 <select asp-for="Topping1">
@@ -79,30 +103,6 @@
                         }
                     }
                 </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sauce" class="control-label"></label>
-                <select asp-for="Sauce" class="form-control">
-                    @{
-                        foreach (var sauce in ViewBag.sauce)
-                        {
-                            <option>@sauce</option>
-                        }
-                    }
-                </select>
-                <span asp-validation-for="Sauce" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Crust" class="control-label"></label>
-                <select asp-for="Crust" class="form-control">
-                    @{
-                        foreach (var crust in ViewBag.crust)
-                        {
-                            <option>@crust</option>
-                        }
-                    }
-                </select>
-                <span asp-validation-for="Crust" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

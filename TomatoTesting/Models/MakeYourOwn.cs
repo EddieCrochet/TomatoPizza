@@ -37,7 +37,6 @@ namespace TomatoPizzaCafe.Models
             if (Topping3 != null)
                 count += 1;
             if (Topping4 != null)
-                count += 1; if (Topping1 != null)
                 count += 1;
             if (Topping5 != null)
                 count += 1;

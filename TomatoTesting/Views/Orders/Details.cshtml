@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TomatoPizzaCafe.Models.OrderItem>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<h4>Order</h4>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            @{
+                foreach (var item in Model)
+                {
+                    <th>
+                        <h2>@item.Order.CustomerName</h2>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Number)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Size)
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                    <th></th>
+                    break;
+                }
+            }
+        </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Size) <span>"</span>
+                        </td>
+                        <td>
+                            @{
+                                if (item.Pizza != null)
+                                {
+                                    @item.Pizza.Type
+                                    <br />
+                                }
+                                else
+                                {
+                                    @item.MakeYourOwn.NumberToppings<span>-Topping Pizza</span>
+                                }
+                            }
+                        </td>
+                        @*<td>
+                                <a asp-action="Edit" asp-route-id="@item.OrderID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.OrderID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.OrderID">Delete</a>
+                            </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>

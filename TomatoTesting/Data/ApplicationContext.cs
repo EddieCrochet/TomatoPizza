@@ -31,6 +31,6 @@ namespace TomatoPizzaCafe.Data
         public DbSet<MakeYourOwn> MakeYourOwns { set; get; }
         public DbSet<Topping> Toppings { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItem { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
     }
 }
