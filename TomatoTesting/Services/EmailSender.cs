@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TomatoPizzaCafe.Services
 {
-    public class EmailSender : IEmailSender
+    internal class EmailSender : IEmailSender
     {
         // Our private configuration variables
         private string host;

@@ -16,5 +16,49 @@ namespace TomatoPizzaCafe.Models
         public MakeYourOwn MakeYourOwn { get; set; }
         public int Size { get; set; }
         public int Number { get; set; }
+        public double Price
+        {
+            get
+            {
+                return GetPrice();
+            }
+        }
+
+        public double GetPrice()
+        {
+            double price = 0;
+            if (Pizza != null)
+            {
+                if (Size == 8)
+                {
+                    price = Pizza.EightInchPrice * Number;
+                }
+                else if (Size == 10)
+                {
+                    price = Pizza.TenInchPrice * Number;
+                }
+                else if (Size == 12)
+                {
+                    price = Pizza.TenInchPrice * Number;
+                }
+                else if (Size == 14)
+                {
+                    price = Pizza.TenInchPrice * Number;
+                }
+                else if (Size == 16)
+                {
+                    price = Pizza.TenInchPrice * Number;
+                }
+                else if (Size == 18)
+                {
+                    price = Pizza.TenInchPrice * Number;
+                }
+            }
+            else
+            {
+                price = (8.95 + MakeYourOwn.NumberToppings) * Number;
+            }
+            return price;
+        }
     }
 }
