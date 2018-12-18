@@ -87,7 +87,7 @@ namespace TomatoPizzaCafe.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderItem",
+                name: "OrderItems",
                 columns: table => new
                 {
                     OrderItemID = table.Column<int>(nullable: false)
@@ -100,21 +100,21 @@ namespace TomatoPizzaCafe.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItem", x => x.OrderItemID);
+                    table.PrimaryKey("PK_OrderItems", x => x.OrderItemID);
                     table.ForeignKey(
-                        name: "FK_OrderItem_MakeYourOwns_MakeYourOwnID",
+                        name: "FK_OrderItems_MakeYourOwns_MakeYourOwnID",
                         column: x => x.MakeYourOwnID,
                         principalTable: "MakeYourOwns",
                         principalColumn: "MakeYourOwnID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_OrderItem_Orders_OrderID",
+                        name: "FK_OrderItems_Orders_OrderID",
                         column: x => x.OrderID,
                         principalTable: "Orders",
                         principalColumn: "OrderID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_OrderItem_Pizzas_PizzaID",
+                        name: "FK_OrderItems_Pizzas_PizzaID",
                         column: x => x.PizzaID,
                         principalTable: "Pizzas",
                         principalColumn: "PizzaID",
@@ -127,18 +127,18 @@ namespace TomatoPizzaCafe.Migrations
                 column: "OrderID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItem_MakeYourOwnID",
-                table: "OrderItem",
+                name: "IX_OrderItems_MakeYourOwnID",
+                table: "OrderItems",
                 column: "MakeYourOwnID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItem_OrderID",
-                table: "OrderItem",
+                name: "IX_OrderItems_OrderID",
+                table: "OrderItems",
                 column: "OrderID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItem_PizzaID",
-                table: "OrderItem",
+                name: "IX_OrderItems_PizzaID",
+                table: "OrderItems",
                 column: "PizzaID");
 
             migrationBuilder.CreateIndex(
@@ -150,7 +150,7 @@ namespace TomatoPizzaCafe.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OrderItem");
+                name: "OrderItems");
 
             migrationBuilder.DropTable(
                 name: "Toppings");

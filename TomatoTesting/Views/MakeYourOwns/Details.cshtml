@@ -5,6 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container">
+    <style>
+
+    html {
+        background-image: url('@Url.Content("~/images/tomatocafe.jpg")');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        height: 50%;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+    </style>
+</div>
+
 <h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">Make Your Own Pizza</h1>
 
 <div>
@@ -13,6 +31,19 @@
 
     <dl class="dl-horizontal">
         @{
+            <dt>
+                @Html.DisplayNameFor(model => model.Crust)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Crust)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Sauce)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Sauce)
+            </dd>
+
             if (Model.Topping1 != null)
             {
                 <dt>
@@ -51,8 +82,12 @@
             }
             if (Model.Topping5 != null)
             {
+                <dt>
                 @Html.DisplayNameFor(modelItem => Model.Topping5)
+                </dt>
+                <dd>
                 @Html.DisplayFor(modelItem => Model.Topping5)
+                 </dd>
             }
             if (Model.Topping6 != null)
             {
@@ -63,20 +98,8 @@
                     @Html.DisplayFor(modelItem => Model.Topping6)
                 </dd>
             }
-            <dt>
-                @Html.DisplayNameFor(model => model.Sauce)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Sauce)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Crust)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Crust)
-            </dd>
-            }
-        </dl>
+        }
+    </dl>
     <a asp-action="Edit" asp-route-id="@Model.MakeYourOwnID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

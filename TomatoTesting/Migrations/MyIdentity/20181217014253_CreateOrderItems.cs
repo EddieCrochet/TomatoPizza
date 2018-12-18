@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TomatoPizzaCafe.Migrations.MyIdentity
 {
-    public partial class InitialMigration : Migration
+    public partial class CreateOrderItems : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -12,11 +12,13 @@ namespace TomatoPizzaCafe.Models
         public int OrderItemID { get; set; }
         public Order Order { get; set; }
         public int? OrderID { get; set; }
+        public int? PizzaID { get; set; }
         public Pizza Pizza { get; set; }
+        public int? MakeYourOwnID { get; set; }
         public MakeYourOwn MakeYourOwn { get; set; }
         public int Size { get; set; }
         public int Number { get; set; }
-        public double Price
+        public double? Price
         {
             get
             {
@@ -54,9 +56,16 @@ namespace TomatoPizzaCafe.Models
                     price = Pizza.TenInchPrice * Number;
                 }
             }
+            else if (MakeYourOwn != null)
+            {
+                if (Number > 0)
+                {
+                    price = (8.95 + MakeYourOwn.NumberToppings) * Number;
+                }
+            }
             else
             {
-                price = (8.95 + MakeYourOwn.NumberToppings) * Number;
+                price = 0;
             }
             return price;
         }
