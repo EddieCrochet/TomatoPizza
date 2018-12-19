@@ -238,7 +238,7 @@ using TomatoPizzaCafe.Models;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(1982, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11858e9658054bad8549404494d5adda", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b87cdb55f42c415ab93dc7a8fd8156c4", async() => {
                 BeginContext(2033, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -273,7 +273,7 @@ using TomatoPizzaCafe.Models;
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(2049, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a6ab761f5ab465893f46408873b2262", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9f7d149dd6614676b4aac60f2dd6aec6", async() => {
                 BeginContext(2071, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();
