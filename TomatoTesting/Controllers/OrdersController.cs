@@ -16,7 +16,8 @@ namespace TomatoPizzaCafe.Controllers
         private readonly ApplicationContext _context;
         private UserManager<IdentityUser> _userManager;
 
-        public OrdersController(ApplicationContext context, UserManager<IdentityUser> userManager)
+        public OrdersController(ApplicationContext context, 
+            UserManager<IdentityUser> userManager)
         {
             _context = context;
             _userManager = userManager;
@@ -152,14 +153,14 @@ namespace TomatoPizzaCafe.Controllers
                 return NotFound();
             }
 
-            var order = await _context.Orders
-                .FirstOrDefaultAsync(m => m.OrderID == id);
-            if (order == null)
+            var orderItem = await _context.OrderItems
+                .FirstOrDefaultAsync(m => m.OrderItemID == id);
+            if (orderItem == null)
             {
                 return NotFound();
             }
 
-            return View(order);
+            return View(orderItem);
         }
 
         // POST: Orders/Delete/5
@@ -167,10 +168,10 @@ namespace TomatoPizzaCafe.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var order = await _context.Orders.FindAsync(id);
-            _context.Orders.Remove(order);
+            var orderItem = await _context.OrderItems.FindAsync(id);
+            _context.OrderItems.Remove(orderItem);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(MyOrder));
         }
 
         private bool OrderExists(int id)

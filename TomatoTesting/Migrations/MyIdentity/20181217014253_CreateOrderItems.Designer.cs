@@ -10,8 +10,8 @@ using TomatoPizzaCafe.Models;
 namespace TomatoPizzaCafe.Migrations.MyIdentity
 {
     [DbContext(typeof(MyIdentityContext))]
-    [Migration("20181213191346_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20181217014253_CreateOrderItems")]
+    partial class CreateOrderItems
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

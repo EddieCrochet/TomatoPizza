@@ -10,8 +10,8 @@ using TomatoPizzaCafe.Data;
 namespace TomatoPizzaCafe.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20181213195215_ChangedToOrderItems")]
-    partial class ChangedToOrderItems
+    [Migration("20181217014140_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -39,6 +39,9 @@
             </div>
             <input type="hidden" asp-for="OrderItemID" />
             <input type="hidden" asp-for="OrderID" />
+            <input type="hidden" asp-for="MakeYourOwn" />
+            <input type="hidden" asp-for="MakeYourOwnID" />
+
             <input type="radio" name="Size" value="8" tabindex="2" />
             8-inch  -  $@(8.95 + Model.MakeYourOwn.NumberToppings)
             <br />

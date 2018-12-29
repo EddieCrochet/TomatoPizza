@@ -5,9 +5,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">My Order</h1>
+<style>
 
-<h4>Order</h4>
+    html {
+        background-image: url('@Url.Content("~/images/tomatocafe.jpg")');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        height: 50%;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+</style>
+<h4>Details</h4>
 <hr />
 <table class="table">
     <thead>
@@ -16,7 +30,7 @@
                 foreach (var item in Model)
                 {
                     <th>
-                        <h2>@item.Order.CustomerName</h2>
+                        <h4>@item.Order.CustomerName</h4>
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Number)
@@ -37,42 +51,42 @@
                 }
             }
         </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                <tr>
-                    <td></td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Number)
-                    </td>
-                    <td>
-                        Total: @Html.DisplayFor(modelItem => item.Size) <span>"</span>
-                    </td>
-                    <td>
-                        @{
-                            if (item.Pizza != null)
-                            {
-                                @item.Pizza.Type
-                                <br />
-                            }
-                            else
-                            {
-                                @item.MakeYourOwn.NumberToppings<span>-Topping Pizza</span>
-                            }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    Total: @Html.DisplayFor(modelItem => item.Size) <span>"</span>
+                </td>
+                <td>
+                    @{
+                        if (item.Pizza != null)
+                        {
+                            @item.Pizza.Type
+                            <br />
                         }
-                    <td>
-                        $@Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    @*<td>
-            <a asp-action="Edit" asp-route-id="@item.OrderID">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.OrderID">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.OrderID">Delete</a>
-        </td>*@
-                </tr>
-                }
-            </tbody>
-        </table>
+                        else
+                        {
+                            @item.MakeYourOwn.NumberToppings<span>-Topping Pizza</span>
+                        }
+                    }
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.OrderItemID">Edit</a> |*@
+                    @*<a asp-action="Details" asp-route-id="@item.OrderID">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.OrderItemID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 <div>
     <a asp-controller="Pizzas" asp-action="Index">Back to Menu</a>
 </div>

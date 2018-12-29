@@ -94,25 +94,25 @@ namespace TomatoPizzaCafe.Controllers
             catch
             { 
                 order = new Order();
+                order.CustomerName = user.UserName;
+                order.OrderItems = new List<OrderItem>();
                 _context.Orders.Add(order);
                 _context.SaveChanges();
             }
-            order.CustomerName = user.UserName;
-            OrderItem orderItem = new OrderItem
-            {
-                OrderID = order.OrderID
-            };
             if (order.OrderItems == null)
             {
                 order.OrderItems = new List<OrderItem>();
             }
+            OrderItem orderItem = new OrderItem
+            {
+                OrderID = order.OrderID
+            };
             order.OrderItems.Add(orderItem);
-            _context.Orders.Update(order);
-            _context.SaveChanges();
             if (id == null)
             {
                 return NotFound();
             }
+            
             var pizza = await _context.Pizzas.FindAsync(id);
             if (pizza == null)
             {
@@ -133,15 +133,13 @@ namespace TomatoPizzaCafe.Controllers
 
         // POST: Pizzas/Order/5
         [HttpPost]
-        public async Task<IActionResult> Order([Bind("OrderItemID, OrderID, Size, Number")] OrderItem orderItem)
+        public async Task<IActionResult> Order([Bind("OrderItemID, OrderID, Pizza, PizzaID, Size, Number, Price")] OrderItem orderItem)
         {
             var user = await _userManager.GetUserAsync(User);
-            var order = _context.Orders.FirstOrDefault(o => o.CustomerName == user.UserName);
             _context.OrderItems.Update(orderItem);
             _context.SaveChanges();
             return View(nameof(Thanks));
         }
-
         public IActionResult Thanks()
         {
             return View();

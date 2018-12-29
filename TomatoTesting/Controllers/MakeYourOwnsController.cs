@@ -17,7 +17,8 @@ namespace TomatoPizzaCafe.Controllers
         private readonly ApplicationContext _context;
         private UserManager<IdentityUser> _userManager;
 
-        public MakeYourOwnsController(ApplicationContext context, UserManager<IdentityUser> userManager)
+        public MakeYourOwnsController(ApplicationContext context, 
+            UserManager<IdentityUser> userManager)
         {
             _context = context;
             _userManager = userManager;
@@ -51,8 +52,8 @@ namespace TomatoPizzaCafe.Controllers
         public IActionResult Create()
         {
             ViewBag.toppings = _context.Toppings;
-            ViewBag.sauce = new List<string> { "marinara", "pesto", "Alfredo" };
-            ViewBag.crust = new List<string> { "hand-tossed", "deep dish", "New York style" };
+            ViewBag.sauce = new List<string> { "Classic Marinara", "Creamy Garlic Parmesan", "Barbeque", "Buffalo" };
+            ViewBag.crust = new List<string> { "Original Pan Pizza", "Hand Tossed Pizza", "Thin `N Crispy", "Original Stuffed Crust" };
             return View();
         }
 
@@ -86,8 +87,8 @@ namespace TomatoPizzaCafe.Controllers
                 return NotFound();
             }
             ViewBag.toppings = _context.Toppings;
-            ViewBag.sauce = new List<string> { "marinara", "pesto", "Alfredo" };
-            ViewBag.crust = new List<string> { "hand-tossed", "deep dish", "New York style" };
+            ViewBag.sauce = new List<string> { "Classic Marinara", "Creamy Garlic Parmesan", "Barbeque", "Buffalo" };
+            ViewBag.crust = new List<string> { "Original Pan Pizza", "Hand Tossed Pizza", "Thin `N Crispy", "Original Stuffed Crust" };
             return View(makeYourOwn);
         }
 
@@ -133,23 +134,27 @@ namespace TomatoPizzaCafe.Controllers
             try
             {
                 order = _context.Orders.First(o => o.CustomerName == user.UserName);
-                if (order.OrderItems == null)
-                    order.OrderItems = new List<OrderItem>();
             }
             catch
             {
                 order = new Order();
+                order.CustomerName = user.UserName;
                 order.OrderItems = new List<OrderItem>();
                 _context.Orders.Add(order);
                 _context.SaveChanges();
             }
-            //var orderId = order.OrderID;
-            order.CustomerName = user.UserName;
-            OrderItem orderItem = new OrderItem();
-            orderItem.OrderID = order.OrderID;
+            if (order.OrderItems == null)
+            {
+                order.OrderItems = new List<OrderItem>();
+            }
+
+            OrderItem orderItem = new OrderItem
+            {
+                OrderID = order.OrderID
+            };
+            
             order.OrderItems.Add(orderItem);
-            _context.OrderItems.Add(orderItem);
-            _context.SaveChanges();
+
             if (id == null)
             {
                 return NotFound();
@@ -166,7 +171,7 @@ namespace TomatoPizzaCafe.Controllers
             }
             else
             {
-                _context.Orders.Add(order);
+                _context.Orders.Add(order); 
             }
             _context.SaveChanges();
             return View(orderItem);
@@ -226,11 +231,10 @@ namespace TomatoPizzaCafe.Controllers
 
         // POST: MakeYourOwns/Order/5
         [HttpPost]
-        public async Task<IActionResult> Order([Bind("OrderItemID, OrderID, Size, Number")] OrderItem orderItem)
+        public async Task<IActionResult> Order([Bind("OrderItemID, OrderID, MakeYourOwn, MakeYourOwnID, Size, Number, Price")] OrderItem orderItem)
         {
             var user = await _userManager.GetUserAsync(User);
-            var order = _context.Orders.FirstOrDefault(o => o.CustomerName == user.UserName);
-            _context.OrderItems.Update(orderItem);
+           _context.OrderItems.Update(orderItem);
             _context.SaveChanges();
             return View(nameof(Thanks));
         }
