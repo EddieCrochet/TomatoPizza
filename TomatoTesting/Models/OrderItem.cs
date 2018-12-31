@@ -18,11 +18,18 @@ namespace TomatoPizzaCafe.Models
         public MakeYourOwn MakeYourOwn { get; set; }
         public int Size { get; set; }
         public int Number { get; set; }
-        public double? Price
+        public double Price
         {
             get
             {
-                return GetPrice();
+                if (Pizza != null)
+                {
+                    return GetPrice();
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,7 @@ using TomatoPizzaCafe.Models;
 
 namespace TomatoPizzaCafe.Controllers
 {
+    [Authorize]
     public class MakeYourOwnsController : Controller
     {
         private readonly ApplicationContext _context;

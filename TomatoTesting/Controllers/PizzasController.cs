@@ -13,6 +13,7 @@ using TomatoPizzaCafe.Models;
 
 namespace TomatoPizzaCafe.Controllers
 {
+    [Authorize]
     public class PizzasController : Controller
     {
         public int NumberOfPies;

@@ -45,7 +45,7 @@
                         @Html.DisplayNameFor(model => model.Price)
                     </th>
                     <th>
-                        Total: $@item.Order.TotalPrice
+                        Total: $@item.Order.TotalPrice.ToString("#,##0.00")
                     </th>
                     break;
                 }
@@ -76,7 +76,7 @@
                         }
                     }
                 <td>
-                    $@Html.DisplayFor(modelItem => item.Price)
+                    $@Html.DisplayFor(modelItem => item.Price.ToString("#0.00"))
                 </td>
                 <td>
                     @*<a asp-action="Edit" asp-route-id="@item.OrderItemID">Edit</a> |*@

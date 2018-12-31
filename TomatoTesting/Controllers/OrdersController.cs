@@ -12,6 +12,7 @@ using TomatoPizzaCafe.Models;
 
 namespace TomatoPizzaCafe.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly ApplicationContext _context;
