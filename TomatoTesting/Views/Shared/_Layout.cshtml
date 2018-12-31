@@ -96,9 +96,15 @@
                     <li><a asp-area="" asp-controller="Orders" asp-action="MyOrder">My Order</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Pizzas" asp-action="Create">Create Pizza</a></li>
-                    <li><a asp-area="" asp-controller="Orders" asp-action="Index">Orders</a></li>
-                    <li><a asp-area="" asp-controller="Toppings" asp-action="Index">Toppings</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a asp-area="" asp-controller="Pizzas" asp-action="Create">Create Pizza</a></li>
+                            <li><a asp-area="" asp-controller="Orders" asp-action="Index">Orders</a></li>
+                            <li><a asp-area="" asp-controller="Toppings" asp-action="Index">Toppings</a></li>
+                        }
+                    }
                 </ul>
                 <partial name="_LoginPartial" />
             </div>

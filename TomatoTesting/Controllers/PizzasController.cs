@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,7 @@ namespace TomatoPizzaCafe.Controllers
         }
 
         // GET: Pizzas/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,6 +51,7 @@ namespace TomatoPizzaCafe.Controllers
         }
 
         // GET: Pizzas/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             //if (id == null)
@@ -69,6 +72,7 @@ namespace TomatoPizzaCafe.Controllers
         // POST: Pizzas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PizzaID,Type,Description, EightInchPrice, TenInchPrice, TwelveInchPrice, FourteenInchPrice, EighteenInchPrice")] Pizza pizza)
@@ -145,8 +149,9 @@ namespace TomatoPizzaCafe.Controllers
             return View();
         }
 
-            // GET: Pizzas/Edit/5
-            public async Task<IActionResult> Edit(int? id)
+        // GET: Pizzas/Edit/5
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -166,7 +171,7 @@ namespace TomatoPizzaCafe.Controllers
         // POST: Pizzas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-       
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("PizzaID,Type,Size,Description,EightInchPrice, TenInchPrice, TwelveInchPrice, FourteenInchPrice, EighteenInchPrice")] Pizza pizza)
@@ -200,6 +205,7 @@ namespace TomatoPizzaCafe.Controllers
         }
 
         // GET: Pizzas/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -218,6 +224,7 @@ namespace TomatoPizzaCafe.Controllers
         }
 
         // POST: Pizzas/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

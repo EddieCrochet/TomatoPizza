@@ -80,8 +80,11 @@
                                 @Html.DisplayFor(modelItem => item.Description)
                             </div>
                             <div>
-                                <a asp-action="Details" asp-route-id="@item.PizzaID">Details</a>
-                                <br />
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Details" asp-route-id="@item.PizzaID">Details</a>
+                                    <br />
+                                }
                                 <a asp-action="Order" asp-route-id="@item.PizzaID">Order</a>
                             </div>
                         </td>

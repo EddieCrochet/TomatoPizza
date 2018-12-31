@@ -41,19 +41,15 @@ namespace TomatoPizzaCafe.Models
                 }
                 else if (Size == 12)
                 {
-                    price = Pizza.TenInchPrice * Number;
+                    price = Pizza.TwelveInchPrice * Number;
                 }
                 else if (Size == 14)
                 {
-                    price = Pizza.TenInchPrice * Number;
-                }
-                else if (Size == 16)
-                {
-                    price = Pizza.TenInchPrice * Number;
+                    price = Pizza.FourteenInchPrice * Number;
                 }
                 else if (Size == 18)
                 {
-                    price = Pizza.TenInchPrice * Number;
+                    price = Pizza.EighteenInchPrice * Number;
                 }
             }
             else if (MakeYourOwn != null)
