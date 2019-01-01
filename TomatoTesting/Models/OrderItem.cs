@@ -22,7 +22,7 @@ namespace TomatoPizzaCafe.Models
         {
             get
             {
-                if (Pizza != null)
+                if (Pizza != null || MakeYourOwn != null)
                 {
                     return GetPrice();
                 }

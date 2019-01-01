@@ -59,7 +59,7 @@ namespace TomatoPizzaCafe
             //Password Strength Setting
             services.Configure<IdentityOptions>(options =>
             {
-                //Password settings
+                //Password settingsa
                 options.Password.RequireDigit = true;
                 options.Password.RequiredLength = 8;
                 options.Password.RequireNonAlphanumeric = false;
