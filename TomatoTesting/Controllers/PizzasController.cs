@@ -13,7 +13,6 @@ using TomatoPizzaCafe.Models;
 
 namespace TomatoPizzaCafe.Controllers
 {
-    [Authorize]
     public class PizzasController : Controller
     {
         public int NumberOfPies;
@@ -88,6 +87,7 @@ namespace TomatoPizzaCafe.Controllers
         }
 
         // GET: Pizzas/Order/5
+        [Authorize]
         public async Task<IActionResult> Order(int? id)
         {
             Order order;
@@ -137,6 +137,7 @@ namespace TomatoPizzaCafe.Controllers
         }
 
         // POST: Pizzas/Order/5
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Order([Bind("OrderItemID, OrderID, Pizza, PizzaID, Size, Number, Price")] OrderItem orderItem)
         {

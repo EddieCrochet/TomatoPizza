@@ -63,7 +63,26 @@ namespace TomatoPizzaCafe.Models
             {
                 if (Number > 0)
                 {
-                    price = (8.95 + MakeYourOwn.NumberToppings) * Number;
+                    if (Size == 8)
+                    {
+                        price = (8.95 + MakeYourOwn.NumberToppings) * Number;
+                    }
+                    else if (Size == 10)
+                    {
+                        price = (12.95 + MakeYourOwn.NumberToppings) * Number;
+                    }
+                    else if (Size == 12)
+                    {
+                        price = (14.95 + MakeYourOwn.NumberToppings) * Number;
+                    }
+                    else if (Size == 14)
+                    {
+                        price = (16 + MakeYourOwn.NumberToppings) * Number;
+                    }
+                    else if (Size == 18)
+                    {
+                        price = (20 + MakeYourOwn.NumberToppings) * Number;
+                    }
                 }
             }
             else
