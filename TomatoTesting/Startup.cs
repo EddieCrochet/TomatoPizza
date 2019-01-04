@@ -155,6 +155,8 @@ namespace TomatoPizzaCafe
             IdentityUser user = await UserManager.FindByEmailAsync("tomatopizza512@gmail.com");
             var User = new IdentityUser();
             await UserManager.AddToRoleAsync(user, "Admin");
+
+
         }
     }
 }

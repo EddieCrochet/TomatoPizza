@@ -42,7 +42,7 @@ namespace TomatoPizzaCafe.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
 
-            var order = await _context.OrderItems
+            var orders = await _context.OrderItems
                 .Where(o => o.Order.CustomerName == user.UserName)
                 .Include(o => o.Order)
                 .Include(o => o.Pizza)
@@ -50,12 +50,12 @@ namespace TomatoPizzaCafe.Controllers
                 .OrderBy(o => o.OrderID)
                 .ToListAsync();
 
-            if (order == null)
+            if (orders == null)
             {
                 return NotFound();
             }
 
-            return View(nameof(Details), order);
+            return View(nameof(Details), orders);
         }
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -29,7 +29,13 @@ namespace TomatoPizzaCafe.Controllers
         // GET: MakeYourOwns
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MakeYourOwns.ToListAsync());
+            var user = await _userManager.GetUserAsync(User);
+
+            var makeYourOwns = await _context.MakeYourOwns
+                .Where(m => m.CustomerName == user.UserName)
+                .ToListAsync();
+
+            return View(makeYourOwns);
         }
 
         // GET: MakeYourOwns/Details/5
@@ -66,8 +72,10 @@ namespace TomatoPizzaCafe.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MakeYourOwn makeYourOwn)
         {
+            var user = await _userManager.GetUserAsync(User);
             if (ModelState.IsValid)
             {
+                makeYourOwn.CustomerName = user.UserName;
                 _context.Add(makeYourOwn);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
