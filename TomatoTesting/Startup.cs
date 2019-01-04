@@ -151,8 +151,8 @@ namespace TomatoPizzaCafe
                 //create the roles and seed them to the database
                 roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
             }
-            //Assign Admin role to the main User
-            IdentityUser user = await UserManager.FindByEmailAsync("compfree512@gmail.com");
+            //Assign Admin role
+            IdentityUser user = await UserManager.FindByEmailAsync("tomatopizza512@gmail.com");
             var User = new IdentityUser();
             await UserManager.AddToRoleAsync(user, "Admin");
         }
