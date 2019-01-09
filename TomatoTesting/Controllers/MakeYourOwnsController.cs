@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TomatoPizzaCafe.Data;
 using TomatoPizzaCafe.Models;
@@ -107,7 +106,7 @@ namespace TomatoPizzaCafe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MakeYourOwnID,Topping1,Topping2,Topping3,Topping4,Topping5,Topping6,Sauce,Crust")] MakeYourOwn makeYourOwn)
+        public async Task<IActionResult> Edit(int id, [Bind("MakeYourOwnID,Topping1,Topping2,Topping3,Topping4,Topping5,Topping6,Sauce,Crust,CustomerName")] MakeYourOwn makeYourOwn)
         {
             if (id != makeYourOwn.MakeYourOwnID)
             {
@@ -151,7 +150,6 @@ namespace TomatoPizzaCafe.Controllers
                 order.CustomerName = user.UserName;
                 order.OrderItems = new List<OrderItem>();
                 _context.Orders.Add(order);
-                _context.SaveChanges();
             }
             if (order.OrderItems == null)
             {
@@ -175,6 +173,7 @@ namespace TomatoPizzaCafe.Controllers
                 return NotFound();
             }
             orderItem.MakeYourOwn = makeYourOwn;
+            orderItem.MakeYourOwnID = makeYourOwn.MakeYourOwnID;
             if (_context.Orders.Contains(order))
             {
                 _context.Orders.Update(order);
@@ -183,61 +182,9 @@ namespace TomatoPizzaCafe.Controllers
             {
                 _context.Orders.Add(order); 
             }
-            _context.SaveChanges();
             return View(orderItem);
         }
-        //    var order = new Order();
-        //    var orderId = order.OrderID;
-        //    order.OrderItems = new List<OrderItem>();
-        //    order.CustomerName = _userManager.GetUserName(User);
-        //    OrderItem orderItem = new OrderItem();
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    order.OrderItems.Add(orderItem);
-        //    _context.OrderItem.Add(orderItem);
-        //    _context.Orders.Add(order);
-        //    _context.SaveChanges();
-        //    var pizza = await _context.Pizzas.FindAsync(id);
-        //    if (pizza == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    orderItem.Pizza = pizza;
-        //    return View(orderItem);
-        //}
-
-        //// POST: Pizzas/Order/5
-        //[HttpPost]
-        //public async Task<IActionResult> Order(OrderItem orderItem)
-        //{
-        //    var user = await _userManager.GetUserAsync(User);
-        //    var order = _context.Orders.FirstOrDefault(o => o.CustomerName == user.UserName);
-        //    var pizza = _context.Pizzas.FirstOrDefault(p => p.PizzaID == orderItem.Pizza.PizzaID);
-        //    orderItem.Pizza = pizza;
-        //    orderItem.OrderID = order.OrderID;
-        //    orderItem.Order = order;
-        //    _context.OrderItem.Add(orderItem);
-        //    _context.SaveChanges();
-        //    return View(nameof(Thanks));
-        //}
-        //// GET: MakeYourOwns/Order/5
-        //public async Task<IActionResult> Order(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var makeYourOwn = await _context.MakeYourOwns.FindAsync(id);
-        //    if (makeYourOwn == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewBag.makeYourOwn = makeYourOwn;
-        //    return View(makeYourOwn);
-    //}
+        
 
         // POST: MakeYourOwns/Order/5
         [HttpPost]
@@ -248,17 +195,7 @@ namespace TomatoPizzaCafe.Controllers
             _context.SaveChanges();
             return View(nameof(Thanks));
         }
-        //Order order = new Order();
-        //var user = _userManager.GetUserAsync(User);
-        //var makeYourOwn = _context.MakeYourOwns.FirstOrDefault(m => m.MakeYourOwnID == id);
-        //order.CustomerName = user.ToString();
-        //order.MakeYourOwns = new List<MakeYourOwn>
-        //{
-        //    makeYourOwn
-        //};
-        //_context.Orders.Add(order);
-        //_context.SaveChanges();
-        //return View(nameof(Thanks));
+       
         public IActionResult Thanks()
         {
             return View();

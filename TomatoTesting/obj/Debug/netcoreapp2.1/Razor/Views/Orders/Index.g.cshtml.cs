@@ -74,7 +74,7 @@ using TomatoPizzaCafe.Models;
             WriteLiteral("\');\r\n        background-position: center;\r\n        background-repeat: no-repeat;\r\n        background-size: auto;\r\n        height: 50%;\r\n    }\r\n\r\n    footer {\r\n        position: fixed;\r\n        bottom: 0;\r\n    }\r\n</style>\r\n<p>\r\n    ");
             EndContext();
             BeginContext(576, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2feeeff5e5074eaca682fe6e29976b5e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a65bad266c92460ebfcf2776ac2ccc95", async() => {
                 BeginContext(599, 10, true);
                 WriteLiteral("Create New");
                 EndContext();

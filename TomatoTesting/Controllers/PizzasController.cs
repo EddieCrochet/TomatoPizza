@@ -102,7 +102,7 @@ namespace TomatoPizzaCafe.Controllers
                 order.CustomerName = user.UserName;
                 order.OrderItems = new List<OrderItem>();
                 _context.Orders.Add(order);
-                _context.SaveChanges();
+                //_context.SaveChanges();
             }
             if (order.OrderItems == null)
             {
@@ -124,6 +124,7 @@ namespace TomatoPizzaCafe.Controllers
                 return NotFound();
             }
             orderItem.Pizza = pizza;
+            orderItem.PizzaID = pizza.PizzaID;
             if (_context.Orders.Contains(order))
             {
                 _context.Orders.Update(order);
@@ -132,7 +133,6 @@ namespace TomatoPizzaCafe.Controllers
             {
                 _context.Orders.Add(order);
             }
-            _context.SaveChanges();
             return View(orderItem);
         }
 
