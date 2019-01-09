@@ -2,17 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "EntityFramework/6.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        }
-      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -118,43 +107,6 @@
         },
         "runtime": {
           "lib/netstandard1.6/Microsoft.AI.DependencyCollector.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Identity.Core/2.2.2": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Identity.EntityFramework/2.2.2": {
-        "type": "package",
-        "dependencies": {
-          "EntityFramework": "6.1.0",
-          "Microsoft.AspNet.Identity.Core": "2.2.2"
-        },
-        "compile": {
-          "lib/net45/Microsoft.AspNet.Identity.EntityFramework.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.AspNet.Identity.EntityFramework.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Identity.Owin/2.2.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Identity.Core": "2.2.2",
-          "Microsoft.Owin.Security": "3.0.1",
-          "Microsoft.Owin.Security.Cookies": "3.0.1",
-          "Microsoft.Owin.Security.OAuth": "3.0.1"
-        },
-        "compile": {
-          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3167,73 +3119,6 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.Owin/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net451/Microsoft.Owin.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Owin.dll": {}
-        }
-      },
-      "Microsoft.Owin.Host.SystemWeb/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Owin": "4.0.0",
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net451/Microsoft.Owin.Host.SystemWeb.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Owin.Host.SystemWeb.dll": {}
-        }
-      },
-      "Microsoft.Owin.Security/3.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Owin": "3.0.1",
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.Security.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.Security.dll": {}
-        }
-      },
-      "Microsoft.Owin.Security.Cookies/3.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Owin": "3.0.1",
-          "Microsoft.Owin.Security": "3.0.1",
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.Security.Cookies.dll": {}
-        }
-      },
-      "Microsoft.Owin.Security.OAuth/3.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Owin": "3.0.1",
-          "Microsoft.Owin.Security": "3.0.1",
-          "Newtonsoft.Json": "6.0.4",
-          "Owin": "1.0.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Owin.Security.OAuth.dll": {}
-        }
-      },
       "Microsoft.Rest.ClientRuntime/2.3.8": {
         "type": "package",
         "dependencies": {
@@ -3709,15 +3594,6 @@
         },
         "runtime": {
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
-        }
-      },
-      "Owin/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Owin.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Owin.dll": {}
         }
       },
       "Remotion.Linq/2.2.0": {
@@ -6174,11 +6050,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
-          "Microsoft.AspNet.Identity.EntityFramework": "2.2.2",
-          "Microsoft.AspNet.Identity.Owin": "2.2.2",
           "Microsoft.AspNetCore.Session": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
-          "Microsoft.Owin.Host.SystemWeb": "4.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1"
         },
         "compile": {
@@ -6191,34 +6064,6 @@
     }
   },
   "libraries": {
-    "EntityFramework/6.1.0": {
-      "sha512": "BWmOeG+3Cbf0Zpit42g2tpiJe07bozetbhvipK/tnkPc4re3O56uOEKah7YkyJa8Z7dRxuS7bnDf3mLOkV5EEg==",
-      "type": "package",
-      "path": "entityframework/6.1.0",
-      "files": [
-        ".signature.p7s",
-        "content/App.config.transform",
-        "content/Web.config.transform",
-        "entityframework.6.1.0.nupkg.sha512",
-        "entityframework.nuspec",
-        "lib/net40/EntityFramework.SqlServer.dll",
-        "lib/net40/EntityFramework.SqlServer.xml",
-        "lib/net40/EntityFramework.dll",
-        "lib/net40/EntityFramework.xml",
-        "lib/net45/EntityFramework.SqlServer.dll",
-        "lib/net45/EntityFramework.SqlServer.xml",
-        "lib/net45/EntityFramework.dll",
-        "lib/net45/EntityFramework.xml",
-        "tools/EntityFramework.PowerShell.Utility.dll",
-        "tools/EntityFramework.PowerShell.dll",
-        "tools/EntityFramework.psd1",
-        "tools/EntityFramework.psm1",
-        "tools/about_EntityFramework.help.txt",
-        "tools/init.ps1",
-        "tools/install.ps1",
-        "tools/migrate.exe"
-      ]
-    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -6303,42 +6148,6 @@
         "lib/netstandard1.6/Microsoft.AI.DependencyCollector.xml",
         "microsoft.applicationinsights.dependencycollector.2.4.1.nupkg.sha512",
         "microsoft.applicationinsights.dependencycollector.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.Identity.Core/2.2.2": {
-      "sha512": "DJNnLn/eElAudZqNUsQ8qQy3LlKnlQ/kBjl+Zi6Xvur/InJ6DZYCuTLV5mtNtDZ0egvpl/e/Q8MLlh+3te7tYw==",
-      "type": "package",
-      "path": "microsoft.aspnet.identity.core/2.2.2",
-      "files": [
-        ".signature.p7s",
-        "lib/net45/Microsoft.AspNet.Identity.Core.dll",
-        "lib/net45/Microsoft.AspNet.Identity.Core.xml",
-        "microsoft.aspnet.identity.core.2.2.2.nupkg.sha512",
-        "microsoft.aspnet.identity.core.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.Identity.EntityFramework/2.2.2": {
-      "sha512": "S/CPI5YfU6dLDmXE9cHvPculn/ccCtLf0mCRPo/9P6IVbuXHbGDxx9PRAX6pEG8Hy10/jW3LSBi+ot4TxM0uHw==",
-      "type": "package",
-      "path": "microsoft.aspnet.identity.entityframework/2.2.2",
-      "files": [
-        ".signature.p7s",
-        "lib/net45/Microsoft.AspNet.Identity.EntityFramework.dll",
-        "lib/net45/Microsoft.AspNet.Identity.EntityFramework.xml",
-        "microsoft.aspnet.identity.entityframework.2.2.2.nupkg.sha512",
-        "microsoft.aspnet.identity.entityframework.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.Identity.Owin/2.2.2": {
-      "sha512": "3hRTfCtU0PTkqFSMpBLVHj2AiPiljzLcLxZLn9QdCInf+0mIuB+w2roSp8KvLeL/CG9kuS9qvm/5+1k5crcazA==",
-      "type": "package",
-      "path": "microsoft.aspnet.identity.owin/2.2.2",
-      "files": [
-        ".signature.p7s",
-        "lib/net45/Microsoft.AspNet.Identity.Owin.dll",
-        "lib/net45/Microsoft.AspNet.Identity.Owin.xml",
-        "microsoft.aspnet.identity.owin.2.2.2.nupkg.sha512",
-        "microsoft.aspnet.identity.owin.nuspec"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -9206,66 +9015,6 @@
         "version.txt"
       ]
     },
-    "Microsoft.Owin/4.0.0": {
-      "sha512": "S1mOnJ3rnbabnanNouATBsa0y/wQtvUIjw7G+jnzKlQWFMoU0xmBi2AGDahTk9C27U0ENC7HBKHHReCJclU4Sw==",
-      "type": "package",
-      "path": "microsoft.owin/4.0.0",
-      "files": [
-        ".signature.p7s",
-        "lib/net451/Microsoft.Owin.XML",
-        "lib/net451/Microsoft.Owin.dll",
-        "microsoft.owin.4.0.0.nupkg.sha512",
-        "microsoft.owin.nuspec"
-      ]
-    },
-    "Microsoft.Owin.Host.SystemWeb/4.0.0": {
-      "sha512": "14dtT77voIHZFqD3hruZG/wKTzCI2WG79EryFwyrzingZSM/itTcNU7RqrIG9xdj6QudGMU4Fc38MS2geKHLJg==",
-      "type": "package",
-      "path": "microsoft.owin.host.systemweb/4.0.0",
-      "files": [
-        ".signature.p7s",
-        "lib/net451/Microsoft.Owin.Host.SystemWeb.dll",
-        "lib/net451/Microsoft.Owin.Host.SystemWeb.xml",
-        "microsoft.owin.host.systemweb.4.0.0.nupkg.sha512",
-        "microsoft.owin.host.systemweb.nuspec"
-      ]
-    },
-    "Microsoft.Owin.Security/3.0.1": {
-      "sha512": "O0EHeebb9TP/k3ChIu/1bKwTekMWVtnwY+khWvTBX5/YngwiWL4YfENsj4mmNciqhZQtuDro0vc7kt3GcuR6Xw==",
-      "type": "package",
-      "path": "microsoft.owin.security/3.0.1",
-      "files": [
-        ".signature.p7s",
-        "lib/net45/Microsoft.Owin.Security.XML",
-        "lib/net45/Microsoft.Owin.Security.dll",
-        "microsoft.owin.security.3.0.1.nupkg.sha512",
-        "microsoft.owin.security.nuspec"
-      ]
-    },
-    "Microsoft.Owin.Security.Cookies/3.0.1": {
-      "sha512": "LPo6jCYi1FppzOoOvR/YuHNdK7EHZiz/GJtpdw6GNxHuYLetXyWEs356R1lndKf8gca4x1v1mQrCaqQJippA9w==",
-      "type": "package",
-      "path": "microsoft.owin.security.cookies/3.0.1",
-      "files": [
-        ".signature.p7s",
-        "lib/net45/Microsoft.Owin.Security.Cookies.dll",
-        "lib/net45/Microsoft.Owin.Security.Cookies.xml",
-        "microsoft.owin.security.cookies.3.0.1.nupkg.sha512",
-        "microsoft.owin.security.cookies.nuspec"
-      ]
-    },
-    "Microsoft.Owin.Security.OAuth/3.0.1": {
-      "sha512": "g3fPi4kF/XGmPthZIZ2LJC8B//OEvv0rvOMnBZUjVY6W6/Efmn5EHVkqtgF9yu9y6CHVRAqmG7p3KMB8j25nNg==",
-      "type": "package",
-      "path": "microsoft.owin.security.oauth/3.0.1",
-      "files": [
-        ".signature.p7s",
-        "lib/net45/Microsoft.Owin.Security.OAuth.XML",
-        "lib/net45/Microsoft.Owin.Security.OAuth.dll",
-        "microsoft.owin.security.oauth.3.0.1.nupkg.sha512",
-        "microsoft.owin.security.oauth.nuspec"
-      ]
-    },
     "Microsoft.Rest.ClientRuntime/2.3.8": {
       "sha512": "Hj96LBoCwKY2VQKfSCVGGPV1sSumVjuYnrlpBwL4JSTnSK4b6ZxjLtXj8LgmKav8xJ2gps+UN7eI3hHVFKvBFw==",
       "type": "package",
@@ -10037,17 +9786,6 @@
         "lib/netstandard1.6/NuGet.Frameworks.xml",
         "nuget.frameworks.4.7.0.nupkg.sha512",
         "nuget.frameworks.nuspec"
-      ]
-    },
-    "Owin/1.0.0": {
-      "sha512": "S87+AKxSxfhXRzIQfm6WBxfGbnzECLG8bmVp3lRiwjeYG9YBJ0AXd+2Xn7I7aqwwj0j4erSpX6H9OhXy+qQ7tw==",
-      "type": "package",
-      "path": "owin/1.0.0",
-      "files": [
-        ".signature.p7s",
-        "lib/net40/Owin.dll",
-        "owin.1.0.0.nupkg.sha512",
-        "owin.nuspec"
       ]
     },
     "Remotion.Linq/2.2.0": {
@@ -15892,107 +15630,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'EntityFramework 6.1.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "EntityFramework",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Identity.Core 2.2.2' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Identity.Core",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Identity.EntityFramework 2.2.2' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Identity.EntityFramework",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Identity.Owin 2.2.2' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Identity.Owin",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Owin 4.0.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.Owin",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Owin.Host.SystemWeb 4.0.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.Owin.Host.SystemWeb",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Owin.Security 3.0.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.Owin.Security",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Owin.Security.Cookies 3.0.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.Owin.Security.Cookies",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Owin.Security.OAuth 3.0.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.Owin.Security.OAuth",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Owin 1.0.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Owin",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    }
-  ]
+  }
 }
