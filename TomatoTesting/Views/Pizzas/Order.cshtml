@@ -42,19 +42,19 @@
             <input type="hidden" asp-for="Pizza" />
             <input type="hidden" asp-for="PizzaID" />
             <input type="radio" name="Size" value="8" tabindex="2" />
-            8-inch  -  $@Model.Pizza.EightInchPrice
+            8-inch  -  $@Model.Pizza.EightInchPrice.ToString("#0.00")
             <br />
             <input type="radio" name="Size" value="10" tabindex="2" />
-            10-inch  -  $@Model.Pizza.TenInchPrice
+            10-inch  -  $@Model.Pizza.TenInchPrice.ToString("#0.00")
             <br />
             <input type="radio" name="Size" value="12" tabindex="2" />
-            12-inch  -  $@Model.Pizza.TwelveInchPrice
+            12-inch  -  $@Model.Pizza.TwelveInchPrice.ToString("#0.00")
             <br />
             <input type="radio" name="Size" value="14" tabindex="2" />
-            14-inch  -  $@Model.Pizza.FourteenInchPrice
+            14-inch  -  $@Model.Pizza.FourteenInchPrice.ToString("#0.00")
             <br />
             <input type="radio" name="Size" value="18" tabindex="2" />
-            18-inch  -  $@Model.Pizza.EighteenInchPrice
+            18-inch  -  $@Model.Pizza.EighteenInchPrice.ToString("#0.00")
             <br />
             <label asp-for=@Model.Number>Number of pies</label>
             <input asp-for=@Model.Number value="1" min="1" tabindex="2" />

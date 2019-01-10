@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using TomatoPizzaCafe.Models;
 
 namespace TomatoPizzaCafe.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly ApplicationContext _context;
@@ -24,6 +26,7 @@ namespace TomatoPizzaCafe.Controllers
         }
 
         // GET: Orders
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.OrderItems
@@ -39,7 +42,7 @@ namespace TomatoPizzaCafe.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
 
-            var order = await _context.OrderItems
+            var orders = await _context.OrderItems
                 .Where(o => o.Order.CustomerName == user.UserName)
                 .Include(o => o.Order)
                 .Include(o => o.Pizza)
@@ -47,12 +50,12 @@ namespace TomatoPizzaCafe.Controllers
                 .OrderBy(o => o.OrderID)
                 .ToListAsync();
 
-            if (order == null)
+            if (orders == null)
             {
                 return NotFound();
             }
 
-            return View(nameof(Details), order);
+            return View(nameof(Details), orders);
         }
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -81,6 +84,7 @@ namespace TomatoPizzaCafe.Controllers
         // POST: Orders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("OrderID,CustomerName")] Order order)
@@ -95,6 +99,7 @@ namespace TomatoPizzaCafe.Controllers
         }
 
         // GET: Orders/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -113,6 +118,7 @@ namespace TomatoPizzaCafe.Controllers
         // POST: Orders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("OrderID,CustomerName")] Order order)

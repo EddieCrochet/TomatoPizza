@@ -23,7 +23,7 @@ namespace TomatoPizzaCafe.Areas.Identity
 
                 services.AddIdentity<IdentityUser, IdentityRole>(config =>
                 {
-                    config.SignIn.RequireConfirmedEmail = false;
+                    config.SignIn.RequireConfirmedEmail = true;
                 })
                     .AddDefaultUI()
                     .AddDefaultTokenProviders()

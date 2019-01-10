@@ -24,6 +24,7 @@ namespace TomatoPizzaCafe.Models
                 return CountToppings();
             }
         }
+        public string CustomerName { get; set; }
         public int? OrderID { get; set; }
         public Order Order { get; set; }
 

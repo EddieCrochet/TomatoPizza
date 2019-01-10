@@ -18,11 +18,18 @@ namespace TomatoPizzaCafe.Models
         public MakeYourOwn MakeYourOwn { get; set; }
         public int Size { get; set; }
         public int Number { get; set; }
-        public double? Price
+        public double Price
         {
             get
             {
-                return GetPrice();
+                if (Pizza != null || MakeYourOwn != null)
+                {
+                    return GetPrice();
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -41,26 +48,41 @@ namespace TomatoPizzaCafe.Models
                 }
                 else if (Size == 12)
                 {
-                    price = Pizza.TenInchPrice * Number;
+                    price = Pizza.TwelveInchPrice * Number;
                 }
                 else if (Size == 14)
                 {
-                    price = Pizza.TenInchPrice * Number;
-                }
-                else if (Size == 16)
-                {
-                    price = Pizza.TenInchPrice * Number;
+                    price = Pizza.FourteenInchPrice * Number;
                 }
                 else if (Size == 18)
                 {
-                    price = Pizza.TenInchPrice * Number;
+                    price = Pizza.EighteenInchPrice * Number;
                 }
             }
             else if (MakeYourOwn != null)
             {
                 if (Number > 0)
                 {
-                    price = (8.95 + MakeYourOwn.NumberToppings) * Number;
+                    if (Size == 8)
+                    {
+                        price = (8.95 + MakeYourOwn.NumberToppings) * Number;
+                    }
+                    else if (Size == 10)
+                    {
+                        price = (12.95 + MakeYourOwn.NumberToppings) * Number;
+                    }
+                    else if (Size == 12)
+                    {
+                        price = (14.95 + MakeYourOwn.NumberToppings) * Number;
+                    }
+                    else if (Size == 14)
+                    {
+                        price = (16 + MakeYourOwn.NumberToppings) * Number;
+                    }
+                    else if (Size == 18)
+                    {
+                        price = (20 + MakeYourOwn.NumberToppings) * Number;
+                    }
                 }
             }
             else

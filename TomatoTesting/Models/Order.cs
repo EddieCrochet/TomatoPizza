@@ -26,7 +26,7 @@ namespace TomatoPizzaCafe.Models
             double totalPrice = 0;
             foreach(var orderItem in OrderItems)
             {
-                totalPrice += orderItem.Price ?? 0;
+                totalPrice += orderItem.Price;
             }
             return totalPrice;
         }

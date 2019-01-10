@@ -32,6 +32,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MakeYourOwnID" />
+            <input type="hidden" asp-for="CustomerName" />
             <div class="form-group">
                 <label asp-for="Crust" class="control-label"></label>
                 <input asp-for="Crust" class="form-control" />

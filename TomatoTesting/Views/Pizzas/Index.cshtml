@@ -74,14 +74,19 @@
                                 @Html.DisplayFor(modelItem => item.Type)
                             </div>
                             <div class="menu-item-price">
-                                $@Html.DisplayFor(modelItem => item.EightInchPrice)+
+                                $@item.EightInchPrice.ToString("#0.00")+
                             </div>
                             <div class="menu-item-description">
                                 @Html.DisplayFor(modelItem => item.Description)
                             </div>
                             <div>
-                                <a asp-action="Details" asp-route-id="@item.PizzaID">Details</a>
-                                <br />
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Details" asp-route-id="@item.PizzaID">Details</a>
+                                    <br />
+                                    <a asp-action="Delete" asp-route-id="@item.PizzaID">Delete</a>
+                                    <br />
+                                }
                                 <a asp-action="Order" asp-route-id="@item.PizzaID">Order</a>
                             </div>
                         </td>
