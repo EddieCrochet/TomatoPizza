@@ -16,22 +16,23 @@
         height: 50%;
     }
 
+    h4 {
+    color: green;
+    font-style: italic;
+    }
+
     footer {
         position: fixed;
         bottom: 0;
     }
 </style>
-<h4>Details</h4>
-<hr />
+<h4>@ViewBag.user</h4>
 <table class="table">
     <thead>
         <tr>
             @{
                 foreach (var item in Model)
                 {
-                    <th>
-                        <h4>@item.Order.CustomerName</h4>
-                    </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Number)
                     </th>
@@ -56,7 +57,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td></td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Number)
                 </td>

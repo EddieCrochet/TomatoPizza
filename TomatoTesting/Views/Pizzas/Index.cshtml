@@ -87,7 +87,10 @@
                                     <a asp-action="Delete" asp-route-id="@item.PizzaID">Delete</a>
                                     <br />
                                 }
-                                <a asp-action="Order" asp-route-id="@item.PizzaID">Order</a>
+                                @if (!User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Order" asp-route-id="@item.PizzaID">Order</a>
+                                }
                             </div>
                         </td>
                     </tr>

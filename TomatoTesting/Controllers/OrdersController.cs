@@ -54,7 +54,7 @@ namespace TomatoPizzaCafe.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.user = user.UserName;
             return View(nameof(Details), orders);
         }
         // GET: Orders/Details/5
@@ -75,28 +75,28 @@ namespace TomatoPizzaCafe.Controllers
             return View(order);
         }
 
-        // GET: Orders/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Orders/Create
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST: Orders/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderID,CustomerName")] Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(order);
-        }
+        //// POST: Orders/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[Authorize(Roles = "Admin")]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("OrderID,CustomerName")] Order order)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(order);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(order);
+        //}
 
         // GET: Orders/Edit/5
         [Authorize(Roles = "Admin")]
@@ -180,24 +180,7 @@ namespace TomatoPizzaCafe.Controllers
             return RedirectToAction(nameof(MyOrder));
         }
 
-        // GET: Orders/Delete-Admin/5
-        //public async Task<IActionResult> DeleteOrder(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var order = await _context.Orders
-        //        .FirstOrDefaultAsync(m => m.OrderID == id);
-        //    if (order == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(order);
-        //}
-
+        // GET: Orders/DeleteAdmin/5
         public async Task<IActionResult> DeleteAdmin(int? id)
         {
             if (id == null)
@@ -215,7 +198,7 @@ namespace TomatoPizzaCafe.Controllers
             return View(orderItem);
         }
 
-        // POST: Orders/Delete-Admin/5
+        // POST: Orders/DeleteAdmin/5
         [HttpPost, ActionName("DeleteAdmin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteAdminConfirmed(int id)
