@@ -180,6 +180,52 @@ namespace TomatoPizzaCafe.Controllers
             return RedirectToAction(nameof(MyOrder));
         }
 
+        // GET: Orders/Delete-Admin/5
+        //public async Task<IActionResult> DeleteOrder(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var order = await _context.Orders
+        //        .FirstOrDefaultAsync(m => m.OrderID == id);
+        //    if (order == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(order);
+        //}
+
+        public async Task<IActionResult> DeleteAdmin(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var orderItem = await _context.OrderItems
+                .FirstOrDefaultAsync(m => m.OrderItemID == id);
+            if (orderItem == null)
+            {
+                return NotFound();
+            }
+
+            return View(orderItem);
+        }
+
+        // POST: Orders/Delete-Admin/5
+        [HttpPost, ActionName("DeleteAdmin")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteAdminConfirmed(int id)
+        {
+            var orderItem = await _context.OrderItems.FindAsync(id);
+            _context.OrderItems.Remove(orderItem);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         private bool OrderExists(int id)
         {
             return _context.Orders.Any(e => e.OrderID == id);

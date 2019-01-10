@@ -102,7 +102,7 @@ namespace TomatoPizzaCafe.Controllers
                 order.CustomerName = user.UserName;
                 order.OrderItems = new List<OrderItem>();
                 _context.Orders.Add(order);
-                //_context.SaveChanges();
+                _context.SaveChanges();
             }
             if (order.OrderItems == null)
             {

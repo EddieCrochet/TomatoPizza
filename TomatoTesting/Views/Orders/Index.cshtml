@@ -80,11 +80,11 @@
                 <td>
                     $@item.Price.ToString("#0.00")
                 </td>
-                @*<td>
-                        <a asp-action="Edit" asp-route-id="@item.OrderID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.OrderID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.OrderID">Delete</a>
-                    </td>*@
+                <td>
+                        @*<a asp-action="Edit" asp-route-id="@item.OrderID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.OrderID">Details</a> |*@
+                        <a asp-action="DeleteAdmin" asp-route-id="@item.OrderItemID">Delete</a>
+                    </td>
             </tr>
         }
     </tbody>
