@@ -5,9 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">My Order</h1>
+<div class="container">
+    <style>
 
-<h3>Are you sure you want to delete this?</h3>
+    html {
+        background-image: url('@Url.Content("~/images/tomatocafe.jpg")');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        height: 50%;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+    </style>
+</div>
+
+<h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">All Orders</h1>
+
+<h3>Are you sure you want to delete this Order?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">

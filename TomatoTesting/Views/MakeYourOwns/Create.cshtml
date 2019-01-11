@@ -5,6 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container">
+    <style>
+
+    html {
+        background-image: url('@Url.Content("~/images/tomatocafe.jpg")');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        height: 50%;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+    </style>
+</div>
+
 <h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">Pizza Builder</h1>
 
 <hr />
@@ -41,7 +59,7 @@
             
             <div class="form-group">
                 <br />
-                <label asp-for="Topping1" class="control-label"></label>
+                <label asp-for="Topping1" class="control-label">Topping 1</label>
                 <select asp-for="Topping1">
                     <option value=" "></option>
                     @{
@@ -52,7 +70,7 @@
                     }
                 </select>
                 <br />
-                <label asp-for="Topping2" class="control-label"></label>
+                <label asp-for="Topping2" class="control-label">Topping 2</label>
                 <select asp-for="Topping2">
                     <option value=" "></option>
                     @{
@@ -63,7 +81,7 @@
                     }
                 </select>
                 <br />
-                <label asp-for="Topping3" class="control-label"></label>
+                <label asp-for="Topping3" class="control-label">Topping 3</label>
                 <select asp-for="Topping3">
                     <option value=" "></option>
                     @{
@@ -74,7 +92,7 @@
                     }
                 </select>
                 <br />
-                <label asp-for="Topping4" class="control-label"></label>
+                <label asp-for="Topping4" class="control-label">Topping 4</label>
                 <select asp-for="Topping4">
                     <option value=" "></option>
                     @{
@@ -85,7 +103,7 @@
                     }
                 </select>
                 <br />
-                <label asp-for="Topping5" class="control-label"></label>
+                <label asp-for="Topping5" class="control-label">Topping 5</label>
                 <select asp-for="Topping5">
                     <option value=" "></option>
                     @{
@@ -96,7 +114,7 @@
                     }
                 </select>
                 <br />
-                <label asp-for="Topping6" class="control-label"></label>
+                <label asp-for="Topping6" class="control-label">Topping 6</label>
                 <select asp-for="Topping6">
                     <option value=" "></option>
                     @{
@@ -108,6 +126,7 @@
                 </select>
             </div>
             <div class="form-group">
+                <hr />
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TomatoPizzaCafe.Data;
 using TomatoPizzaCafe.Models;
@@ -57,6 +54,8 @@ namespace TomatoPizzaCafe.Controllers
             ViewBag.user = user.UserName;
             return View(nameof(Details), orders);
         }
+
+
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -75,28 +74,6 @@ namespace TomatoPizzaCafe.Controllers
             return View(order);
         }
 
-        //// GET: Orders/Create
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        //// POST: Orders/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[Authorize(Roles = "Admin")]
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("OrderID,CustomerName")] Order order)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(order);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(order);
-        //}
 
         // GET: Orders/Edit/5
         [Authorize(Roles = "Admin")]
@@ -169,6 +146,7 @@ namespace TomatoPizzaCafe.Controllers
             return View(orderItem);
         }
 
+
         // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -179,6 +157,7 @@ namespace TomatoPizzaCafe.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(MyOrder));
         }
+
 
         // GET: Orders/DeleteAdmin/5
         public async Task<IActionResult> DeleteAdmin(int? id)
@@ -197,6 +176,7 @@ namespace TomatoPizzaCafe.Controllers
 
             return View(orderItem);
         }
+
 
         // POST: Orders/DeleteAdmin/5
         [HttpPost, ActionName("DeleteAdmin")]

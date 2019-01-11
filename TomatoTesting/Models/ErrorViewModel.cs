@@ -1,5 +1,3 @@
-using System;
-
 namespace TomatoPizzaCafe.Models
 {
     public class ErrorViewModel

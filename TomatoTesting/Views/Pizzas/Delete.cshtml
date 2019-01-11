@@ -24,11 +24,10 @@
 
 </div>
 
-<h2>Delete</h2>
+<h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">Tomato Pizza's Menu</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Are you sure you want to delete this pizza?</h3>
 <div>
-    <h4>Pizza</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -68,7 +67,7 @@
             @Model.EighteenInchPrice.ToString("#0.00")
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="PizzaID" />
         <input type="submit" value="Delete" class="btn btn-default" /> |

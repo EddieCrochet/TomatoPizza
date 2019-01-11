@@ -5,6 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container">
+    <style>
+
+    html {
+        background-image: url('@Url.Content("~/images/tomatocafe.jpg")');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        height: 50%;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+    </style>
+</div>
+
 <h1 style="font-family: 'Brush Script MT'; font-size: 40px; text-align:center; color: brown">My Order</h1>
 <style>
 
@@ -34,10 +52,10 @@
                 foreach (var item in Model)
                 {
                     <th>
-                        @Html.DisplayNameFor(model => model.Size)
+                        Type
                     </th>
                     <th>
-                        Type
+                        @Html.DisplayNameFor(model => model.Size)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Number)
@@ -58,9 +76,6 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Size) <span>"</span>
-            </td>
-            <td>
                 @{
                     if (item.Pizza != null)
                     {
@@ -72,6 +87,9 @@
                         @item.MakeYourOwn.NumberToppings<span>-Topping Pizza</span>
                     }
                 }
+            <td>
+                @Html.DisplayFor(modelItem => item.Size) <span>"</span>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Number)
             </td>

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TomatoPizzaCafe.Data;
 using TomatoPizzaCafe.Models;
@@ -54,18 +52,6 @@ namespace TomatoPizzaCafe.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //var pizza = await _context.Pizzas
-            //    .FirstOrDefaultAsync(m => m.PizzaId == id);
-            //if (pizza == null)
-            //{
-            //    return NotFound();
-            //}
-            //ViewBag.name = pizza.Type;
             return View();
         }
 
@@ -169,7 +155,6 @@ namespace TomatoPizzaCafe.Controllers
         }
 
 
-
         // POST: Pizzas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -206,6 +191,7 @@ namespace TomatoPizzaCafe.Controllers
             return View(pizza);
         }
 
+
         // GET: Pizzas/Delete/5
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
@@ -224,6 +210,7 @@ namespace TomatoPizzaCafe.Controllers
 
             return View(pizza);
         }
+
 
         // POST: Pizzas/Delete/5
         [Authorize(Roles = "Admin")]
