@@ -91,7 +91,7 @@ namespace TomatoPizzaCafe
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider services)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             EnsureDatabaseUpdated(app);
 
@@ -117,7 +117,7 @@ namespace TomatoPizzaCafe
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            CreateUserRoles(services).Wait();
+            CreateUserRoles(app.ApplicationServices).Wait();
         }
         private void EnsureDatabaseUpdated(IApplicationBuilder app)
         {
