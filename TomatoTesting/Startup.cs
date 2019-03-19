@@ -91,7 +91,7 @@ namespace TomatoPizzaCafe
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider services)
         {
             EnsureDatabaseUpdated(app);
 
@@ -117,7 +117,7 @@ namespace TomatoPizzaCafe
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            CreateUserRoles(app.ApplicationServices).Wait();
+            CreateUserRoles(services).Wait();
         }
         private void EnsureDatabaseUpdated(IApplicationBuilder app)
         {
@@ -150,9 +150,9 @@ namespace TomatoPizzaCafe
             //Assign Admin role
             IdentityUser user = await UserManager.FindByEmailAsync("tomatopizza512@gmail.com");
             var User = new IdentityUser();
+
+            //this user is returning null - why?
             await UserManager.AddToRoleAsync(user, "Admin");
-
-
         }
     }
 }
