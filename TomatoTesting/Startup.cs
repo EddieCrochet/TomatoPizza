@@ -117,6 +117,7 @@ namespace TomatoPizzaCafe
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
+            CreateAdmin(services).Wait();
             CreateUserRoles(services).Wait();
         }
         private void EnsureDatabaseUpdated(IApplicationBuilder app)
@@ -134,6 +135,26 @@ namespace TomatoPizzaCafe
                 }
             }
         }
+
+        private async Task CreateAdmin(IServiceProvider prov)
+        {
+            var UserManager = prov.GetRequiredService<UserManager<IdentityUser>>();
+            IdentityUser user = await UserManager.FindByEmailAsync("tomatopizza512@gmail.com");
+
+            if (user == null)
+            {
+                var adminUser = new IdentityUser
+                {
+                    Email = "tomatopizza512@gmail.com",
+                    UserName = "tomatopizza512@gmail.com"
+                };
+                var result = await UserManager.CreateAsync(adminUser, "Hello1234!");
+                if (!result.Succeeded) {
+                    throw new ApplicationException("Could not created Admin user");
+                }
+            }
+        }
+
         private async Task CreateUserRoles(IServiceProvider serviceProvider)
         {
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -149,10 +170,11 @@ namespace TomatoPizzaCafe
             }
             //Assign Admin role
             IdentityUser user = await UserManager.FindByEmailAsync("tomatopizza512@gmail.com");
-            var User = new IdentityUser();
 
-            //this user is returning null - why?
-            await UserManager.AddToRoleAsync(user, "Admin");
+            if(user != null)
+            {
+                await UserManager.AddToRoleAsync(user, "Admin");
+            }
         }
     }
 }
