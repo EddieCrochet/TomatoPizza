@@ -139,14 +139,14 @@ namespace TomatoPizzaCafe
         private async Task CreateAdmin(IServiceProvider prov)
         {
             var UserManager = prov.GetRequiredService<UserManager<IdentityUser>>();
-            IdentityUser user = await UserManager.FindByEmailAsync("tomatopizza512@gmail.com");
+            IdentityUser user = await UserManager.FindByEmailAsync("eddiecrochet1994@gmail.com");
 
             if (user == null)
             {
                 var adminUser = new IdentityUser
                 {
-                    Email = "tomatopizza512@gmail.com",
-                    UserName = "tomatopizza512@gmail.com"
+                    Email = "eddiecrochet1994@gmail.com",
+                    UserName = "eddiecrochet1994@gmail.com"
                 };
                 var result = await UserManager.CreateAsync(adminUser, "Hello1234!");
                 if (!result.Succeeded) {
