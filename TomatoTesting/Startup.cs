@@ -169,7 +169,7 @@ namespace TomatoPizzaCafe
                 roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
             }
             //Assign Admin role
-            IdentityUser user = await UserManager.FindByEmailAsync("tomatopizza512@gmail.com");
+            IdentityUser user = await UserManager.FindByEmailAsync("eddiecrochet1994@gmail.com");
 
             if(user != null)
             {
