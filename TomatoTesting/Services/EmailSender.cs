@@ -25,14 +25,14 @@ namespace TomatoPizzaCafe.Services
         }
 
         // Use our configuration to send the email by using SmtpClient
-        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
+        public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             var client = new SmtpClient(host, port)
             {
                 Credentials = new NetworkCredential(userName, password),
                 EnableSsl = enableSSL
             };
-            await client.SendMailAsync(
+            return client.SendMailAsync(
                 new MailMessage(userName, email, subject, htmlMessage) { IsBodyHtml = true }
             );
         }

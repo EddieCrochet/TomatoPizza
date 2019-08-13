@@ -43,6 +43,17 @@ namespace TomatoPizzaCafe
                 )
             );
 
+            EmailSender ES = new EmailSender(Configuration["EmailSender:Host"],
+                    Configuration.GetValue<int>("EmailSender:Port"),
+                    Configuration.GetValue<bool>("EmailSender:EnableSSL"),
+                    Configuration["EmailSender:UserName"],
+                    Configuration["EmailSender:Password"]
+                );
+
+            ES.SendEmailAsync("eddiecrochet1994@gmail.com",
+                "Register Account With TomatoPizza",
+                "Hey plz register your account now thanks");
+
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("TomatoPizzaCafeContextConnection")));
