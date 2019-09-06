@@ -55,7 +55,6 @@ namespace TomatoPizzaCafe.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            [Required]
             [StringLength(10, ErrorMessage = "The {0} must be {1} characters long.", MinimumLength = 10)]
             [DataType(DataType.PhoneNumber)]
             [Display(Name = "Phone Number")]
