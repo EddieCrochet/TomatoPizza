@@ -49,6 +49,7 @@ namespace TomatoPizzaCafe
                     Configuration["EmailSender:UserName"],
                     Configuration["EmailSender:Password"]
                 );
+            //var temp = Configuration["EmailSender:Password"];
 
             ES.SendEmailAsync("eddiecrochet1994@gmail.com",
                 "Register Account With TomatoPizza",
