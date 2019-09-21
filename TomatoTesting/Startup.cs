@@ -51,7 +51,7 @@ namespace TomatoPizzaCafe
                 );
             //var temp = Configuration["EmailSender:Password"];
 
-            ES.SendEmailAsync("eddiecrochet1994@gmail.com",
+            ES.SendEmailAsync("mydummytestermail@gmail.com",
                 "Register Account With TomatoPizza",
                 "Hey plz register your account now thanks");
 
@@ -151,18 +151,18 @@ namespace TomatoPizzaCafe
         private async Task CreateAdmin(IServiceProvider prov)
         {
             var UserManager = prov.GetRequiredService<UserManager<IdentityUser>>();
-            IdentityUser user = await UserManager.FindByEmailAsync("eddiecrochet1994@gmail.com");
+            IdentityUser user = await UserManager.FindByEmailAsync("mydummytestermail@gmail.com");
 
             if (user == null)
             {
                 var adminUser = new IdentityUser
                 {
-                    Email = "eddiecrochet1994@gmail.com",
-                    UserName = "eddiecrochet1994@gmail.com"
+                    Email = "mydummytestermail@gmail.com",
+                    UserName = "mydummytestermail@gmail.com"
                 };
                 var result = await UserManager.CreateAsync(adminUser, "Hello1234!");
                 if (!result.Succeeded) {
-                    throw new ApplicationException("Could not created Admin user");
+                    throw new ApplicationException("Could not create Admin user");
                 }
             }
         }
