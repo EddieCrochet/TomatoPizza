@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Configuration;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
